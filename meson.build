@@ -182,7 +182,7 @@ subdir('protocols')
 
 # --- Include directories ---
 
-wm_inc = include_directories('include', 'src')
+wm_inc = include_directories('src')
 
 # --- Collect sources ---
 

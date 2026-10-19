@@ -5,7 +5,7 @@
 #   ./fuzz_rcparser tests/fuzz/corpus/rcparser/
 #   ./fuzz_keybind tests/fuzz/corpus/keybind/
 
-fuzz_inc = include_directories('../../include', '../../src')
+fuzz_inc = include_directories('../../src')
 
 # Check if the compiler supports -fsanitize=fuzzer
 have_fuzzer = cc.has_argument('-fsanitize=fuzzer')

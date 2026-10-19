@@ -1,7 +1,7 @@
 # Test infrastructure for fluxland
 # Each test is a standalone executable that returns 0 on success.
 
-test_inc = include_directories('../include', '../src')
+test_inc = include_directories('../src')
 
 # --- test_config: config parser tests ---
 test_config = executable(
