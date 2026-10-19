@@ -597,11 +597,28 @@ wm_server_run(struct wm_server *server)
 	wl_display_run(server->wl_display);
 }
 
+/* Remove a listener if it was ever added (the server starts zeroed) */
+static void
+remove_listener(struct wl_listener *listener)
+{
+	if (listener->link.next)
+		wl_list_remove(&listener->link);
+}
+
 void
 wm_server_destroy(struct wm_server *server)
 {
 	wm_xwayland_finish(server);
 	wl_display_destroy_clients(server->wl_display);
+
+	/*
+	 * wlroots 0.19+ asserts that no listeners remain on a global's
+	 * signals when wl_display_destroy() tears it down.
+	 */
+	remove_listener(&server->new_xdg_toplevel);
+	remove_listener(&server->new_xdg_popup);
+	remove_listener(&server->new_xdg_decoration);
+	remove_listener(&server->gamma_set_gamma);
 
 #ifdef WM_HAS_SYSTRAY
 	wm_systray_destroy(server->systray);

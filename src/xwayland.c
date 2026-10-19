@@ -847,6 +847,9 @@ void
 wm_xwayland_finish(struct wm_server *server)
 {
 	if (server->xwayland) {
+		/* wlroots 0.19+ asserts no listeners remain on destroy */
+		wl_list_remove(&server->xwayland_new_surface.link);
+		wl_list_remove(&server->xwayland_ready.link);
 		wlr_xwayland_destroy(server->xwayland);
 		server->xwayland = NULL;
 	}
