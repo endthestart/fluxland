@@ -62,16 +62,8 @@ wlr_output_layout_get_box(struct wlr_output_layout *layout,
 	*box = g_layout_box;
 }
 
-/* Global controlling what wlr_xdg_surface_get_geometry returns */
+/* Window geometry the view reports (wlroots 0.19+ reads wlr_xdg_surface.geometry) */
 static struct wlr_box g_xdg_geo = { .x = 0, .y = 0, .width = 200, .height = 150 };
-
-void
-wlr_xdg_surface_get_geometry(struct wlr_xdg_surface *surface,
-	struct wlr_box *box)
-{
-	(void)surface;
-	*box = g_xdg_geo;
-}
 
 uint32_t
 wlr_xdg_toplevel_set_size(struct wlr_xdg_toplevel *toplevel,
@@ -230,6 +222,7 @@ setup_anchor_env(struct wm_view *view)
 
 	/* Default geometry returned by stub: 200x150 */
 	g_xdg_geo = (struct wlr_box){ 0, 0, 200, 150 };
+	s_xdg_surface.geometry = g_xdg_geo;
 }
 
 /* Test: init/finish lifecycle */

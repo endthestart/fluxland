@@ -160,6 +160,7 @@ struct wlr_surface {
 
 struct wlr_xdg_surface {
 	struct wlr_surface *surface;
+	struct wlr_box geometry;
 };
 
 struct wlr_xdg_toplevel {
@@ -476,16 +477,6 @@ wlr_scene_tree_from_node(struct wlr_scene_node *node)
 	return (struct wlr_scene_tree *)node;
 }
 
-static void wlr_xdg_surface_get_geometry(struct wlr_xdg_surface *surface,
-	struct wlr_box *box)
-{
-	(void)surface;
-	box->x = 0;
-	box->y = 0;
-	box->width = 800;
-	box->height = 600;
-}
-
 static uint32_t wlr_xdg_toplevel_set_size(struct wlr_xdg_toplevel *tl,
 	int w, int h)
 {
@@ -675,6 +666,7 @@ setup(void)
 	test_server.style = &test_style;
 
 	test_xdg_surface.surface = &test_surface;
+	test_xdg_surface.geometry = (struct wlr_box){ 0, 0, 800, 600 };
 	test_toplevel.base = &test_xdg_surface;
 	test_toplevel.width = 800;
 	test_toplevel.height = 600;

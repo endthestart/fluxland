@@ -102,6 +102,7 @@ struct wlr_surface {
 
 struct wlr_xdg_surface {
 	struct wlr_surface *surface;
+	struct wlr_box geometry;
 };
 
 struct wlr_xdg_toplevel {
@@ -156,7 +157,6 @@ struct wm_view {
 
 static int g_set_enabled_count;
 static int g_set_position_count;
-static int g_get_geometry_count;
 static int g_set_size_count;
 static int g_decoration_update_count;
 static int g_focus_view_count;
@@ -181,18 +181,6 @@ wlr_scene_node_set_position(struct wlr_scene_node *node, int x, int y)
 		node->y = y;
 	}
 	g_set_position_count++;
-}
-
-static void
-wlr_xdg_surface_get_geometry(struct wlr_xdg_surface *surface,
-	struct wlr_box *box)
-{
-	/* Return a fixed geometry for the active view */
-	box->x = 0;
-	box->y = 0;
-	box->width = 800;
-	box->height = 600;
-	g_get_geometry_count++;
 }
 
 static uint32_t
@@ -247,7 +235,6 @@ reset_globals(void)
 {
 	g_set_enabled_count = 0;
 	g_set_position_count = 0;
-	g_get_geometry_count = 0;
 	g_set_size_count = 0;
 	g_decoration_update_count = 0;
 	g_focus_view_count = 0;
@@ -262,6 +249,7 @@ make_view(int idx, const char *title)
 	/* Wire up xdg surface chain */
 	test_surfaces[idx].dummy = 0;
 	test_xdg_surfaces[idx].surface = &test_surfaces[idx];
+	test_xdg_surfaces[idx].geometry = (struct wlr_box){ 0, 0, 800, 600 };
 	test_toplevels[idx].base = &test_xdg_surfaces[idx];
 	test_toplevels[idx].width = 800;
 	test_toplevels[idx].height = 600;

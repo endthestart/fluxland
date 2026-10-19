@@ -630,10 +630,7 @@ void wm_rules_apply(struct wm_rules *rules, struct wm_view *view) {
 					int vw = 0, vh = 0;
 					if (view->xdg_toplevel) {
 						struct wlr_box geo;
-						wlr_xdg_surface_get_geometry(
-							view->xdg_toplevel
-							    ->base,
-							&geo);
+						geo = view->xdg_toplevel->base->geometry;
 						vw = geo.width;
 						vh = geo.height;
 					}

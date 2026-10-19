@@ -79,8 +79,8 @@ endif
 # --- Core dependencies ---
 
 wlroots = dependency(
-  'wlroots-0.18',
-  version: ['>=0.18.0', '<0.19.0'],
+  'wlroots-0.20',
+  version: ['>=0.20.0', '<0.21.0'],
 )
 
 wayland_server = dependency('wayland-server', version: '>=1.22.0')

@@ -534,7 +534,7 @@ handle_xwayland_request_maximize(struct wl_listener *listener, void *data)
 	}
 
 	wlr_xwayland_surface_set_maximized(xview->xsurface,
-		xview->maximized);
+		xview->maximized, xview->maximized);
 }
 
 static void

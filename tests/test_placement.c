@@ -98,6 +98,7 @@ struct wlr_scene_tree {
 
 struct wlr_xdg_surface {
 	struct wlr_surface *surface;
+	struct wlr_box geometry;
 };
 
 struct wlr_xdg_toplevel {
@@ -190,7 +191,7 @@ struct wm_view {
 
 static int g_set_size_count;
 static int g_set_position_count;
-static struct wlr_box g_stub_xdg_geo; /* geometry returned by stub */
+static struct wlr_box g_stub_xdg_geo; /* window geometry of every test view */
 
 /* Output returned by wlr_output_layout_output_at */
 static struct wlr_output *g_output_at_result;
@@ -219,14 +220,6 @@ wlr_output_layout_get_box(struct wlr_output_layout *layout,
 	(void)layout;
 	(void)output;
 	*box = g_layout_box;
-}
-
-static void
-wlr_xdg_surface_get_geometry(struct wlr_xdg_surface *surface,
-	struct wlr_box *box)
-{
-	(void)surface;
-	*box = g_stub_xdg_geo;
 }
 
 static uint32_t
@@ -307,6 +300,15 @@ static struct wlr_scene_tree test_trees[MAX_TEST_VIEWS];
 static struct wlr_xdg_toplevel test_toplevels[MAX_TEST_VIEWS];
 static struct wlr_xdg_surface test_xdg_surfaces[MAX_TEST_VIEWS];
 
+/* Set the window geometry (wlr_xdg_surface.geometry) of every test view */
+static void
+set_stub_xdg_geo(struct wlr_box geo)
+{
+	g_stub_xdg_geo = geo;
+	for (int i = 0; i < MAX_TEST_VIEWS; i++)
+		test_xdg_surfaces[i].geometry = geo;
+}
+
 static void
 reset_globals(void)
 {
@@ -361,7 +363,7 @@ setup(void)
 	g_output_at_result = &test_wlr_output;
 
 	/* Default XDG geometry: 400x300 */
-	g_stub_xdg_geo = (struct wlr_box){ 0, 0, 400, 300 };
+	set_stub_xdg_geo((struct wlr_box){ 0, 0, 400, 300 });
 
 	/* Active workspace */
 	g_active_workspace = &test_workspace;
@@ -376,6 +378,7 @@ init_view(int idx)
 {
 	struct wm_view *v = &test_views[idx];
 	test_xdg_surfaces[idx].surface = NULL;
+	test_xdg_surfaces[idx].geometry = g_stub_xdg_geo;
 	test_toplevels[idx].base = &test_xdg_surfaces[idx];
 	test_toplevels[idx].width = 400;
 	test_toplevels[idx].height = 300;
@@ -1011,7 +1014,7 @@ test_view_dims_normal(void)
 {
 	setup();
 	init_view(0);
-	g_stub_xdg_geo = (struct wlr_box){ 0, 0, 800, 600 };
+	set_stub_xdg_geo((struct wlr_box){ 0, 0, 800, 600 });
 
 	int w, h;
 	view_dims(&test_views[0], &w, &h);
@@ -1029,7 +1032,7 @@ test_view_dims_zero_size(void)
 {
 	setup();
 	init_view(0);
-	g_stub_xdg_geo = (struct wlr_box){ 0, 0, 0, 0 };
+	set_stub_xdg_geo((struct wlr_box){ 0, 0, 0, 0 });
 
 	int w, h;
 	view_dims(&test_views[0], &w, &h);
@@ -1049,7 +1052,7 @@ test_under_mouse_window_larger_than_output(void)
 	init_view(0);
 
 	/* Window is 2000x1200, larger than 1920x1080 output */
-	g_stub_xdg_geo = (struct wlr_box){ 0, 0, 2000, 1200 };
+	set_stub_xdg_geo((struct wlr_box){ 0, 0, 2000, 1200 });
 
 	test_cursor.x = 960.0;
 	test_cursor.y = 540.0;

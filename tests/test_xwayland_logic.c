@@ -333,11 +333,12 @@ static void wlr_xwayland_surface_configure(
 }
 
 static void wlr_xwayland_surface_set_maximized(
-	struct wlr_xwayland_surface *surface, bool maximized)
+	struct wlr_xwayland_surface *surface, bool maximized_horz,
+	bool maximized_vert)
 {
 	(void)surface;
 	g_set_maximized_called = true;
-	g_last_maximized_value = maximized;
+	g_last_maximized_value = maximized_horz && maximized_vert;
 }
 
 static void wlr_xwayland_surface_set_fullscreen(

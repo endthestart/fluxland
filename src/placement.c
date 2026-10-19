@@ -75,7 +75,7 @@ static void
 view_dims(struct wm_view *view, int *w, int *h)
 {
 	struct wlr_box geo;
-	wlr_xdg_surface_get_geometry(view->xdg_toplevel->base, &geo);
+	geo = view->xdg_toplevel->base->geometry;
 	*w = geo.width > 0 ? geo.width : 200;
 	*h = geo.height > 0 ? geo.height : 200;
 }

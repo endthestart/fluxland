@@ -38,7 +38,7 @@ sync_view_to_group(struct wm_tab_group *group, struct wm_view *view)
 
 	/* Match size */
 	struct wlr_box geo;
-	wlr_xdg_surface_get_geometry(active->xdg_toplevel->base, &geo);
+	geo = active->xdg_toplevel->base->geometry;
 	wlr_xdg_toplevel_set_size(view->xdg_toplevel,
 		geo.width, geo.height);
 }
