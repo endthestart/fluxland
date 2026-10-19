@@ -585,6 +585,12 @@ handle_cursor_button(struct wl_listener *listener, void *data)
 								target->
 								tab_group,
 								dragged);
+							/* Keep the dropped window
+							 * shown and focused */
+							wm_tab_group_activate(
+								target->
+								tab_group,
+								dragged);
 						}
 						server->cursor_mode =
 							WM_CURSOR_PASSTHROUGH;
