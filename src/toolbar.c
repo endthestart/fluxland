@@ -100,7 +100,8 @@ parse_toolbar_tools(struct wm_toolbar *toolbar, const char *tools_str)
 	int count = 0;
 	enum wm_toolbar_tool_type types[WM_TOOLBAR_MAX_TOOLS];
 	char *saveptr = NULL;
-	char *tok = strtok_r(copy, " \t", &saveptr);
+	/* Fluxbox separates tools with commas; accept spaces too */
+	char *tok = strtok_r(copy, " \t,", &saveptr);
 	while (tok && count < WM_TOOLBAR_MAX_TOOLS) {
 		enum wm_toolbar_tool_type type;
 		if (parse_tool_name(tok, &type)) {
@@ -109,7 +110,7 @@ parse_toolbar_tools(struct wm_toolbar *toolbar, const char *tools_str)
 			wlr_log(WLR_INFO,
 				"toolbar: unknown tool '%s', skipping", tok);
 		}
-		tok = strtok_r(NULL, " \t", &saveptr);
+		tok = strtok_r(NULL, " \t,", &saveptr);
 	}
 	free(copy);
 
