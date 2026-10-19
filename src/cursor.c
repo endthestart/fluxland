@@ -206,6 +206,23 @@ process_cursor_resize(struct wm_server *server, uint32_t time)
 	}
 }
 
+/*
+ * The window being tabbed follows the pointer, so hit-test with it hidden:
+ * otherwise the pointer always lands on the dragged window itself.
+ */
+static struct wm_view *
+tab_drop_target_at(struct wm_server *server, struct wm_view *dragged)
+{
+	double sx, sy;
+	struct wlr_surface *surface = NULL;
+
+	wlr_scene_node_set_enabled(&dragged->scene_tree->node, false);
+	struct wm_view *target = view_at(server,
+		server->cursor->x, server->cursor->y, &surface, &sx, &sy);
+	wlr_scene_node_set_enabled(&dragged->scene_tree->node, true);
+	return target;
+}
+
 static void
 process_cursor_tabbing(struct wm_server *server, uint32_t time)
 {
@@ -226,10 +243,7 @@ process_cursor_tabbing(struct wm_server *server, uint32_t time)
 		view->x, view->y);
 
 	/* Find if cursor is over another view's titlebar */
-	double sx, sy;
-	struct wlr_surface *surface = NULL;
-	struct wm_view *target = view_at(server,
-		server->cursor->x, server->cursor->y, &surface, &sx, &sy);
+	struct wm_view *target = tab_drop_target_at(server, view);
 
 	if (target && target != view && target->decoration) {
 		double dx = server->cursor->x - target->x;
@@ -543,12 +557,8 @@ handle_cursor_button(struct wl_listener *listener, void *data)
 			    server->grabbed_view) {
 				struct wm_view *dragged =
 					server->grabbed_view;
-				double sx2, sy2;
-				struct wlr_surface *surf2 = NULL;
-				struct wm_view *target = view_at(server,
-					server->cursor->x,
-					server->cursor->y,
-					&surf2, &sx2, &sy2);
+				struct wm_view *target =
+					tab_drop_target_at(server, dragged);
 
 				if (target && target != dragged &&
 				    target->decoration) {
