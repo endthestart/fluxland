@@ -481,6 +481,11 @@ collect_iconbar_entries(struct wm_toolbar *toolbar)
 			continue;
 		}
 
+		/* Dockapps live in the slit, not the icon bar */
+		if (view->docked) {
+			continue;
+		}
+
 		bool is_iconified = !view->scene_tree->node.enabled;
 		bool on_current_ws = (view->workspace == current_ws ||
 			view->sticky);

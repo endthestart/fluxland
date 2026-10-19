@@ -387,6 +387,7 @@ struct wm_view {
 	bool maximized_vert, maximized_horiz;
 	bool lhalf, rhalf;
 	bool show_decoration;
+	bool docked;
 	char *title;
 	char *app_id;
 	struct wm_workspace *workspace;
