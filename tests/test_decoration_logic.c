@@ -156,11 +156,15 @@ struct wlr_box {
 
 struct wlr_surface {
 	int dummy;
+	struct {
+		struct wl_signal commit;
+	} events;
 };
 
 struct wlr_xdg_surface {
 	struct wlr_surface *surface;
 	struct wlr_box geometry;
+	bool initialized;
 };
 
 struct wlr_xdg_toplevel {
@@ -169,6 +173,7 @@ struct wlr_xdg_toplevel {
 };
 
 struct wlr_xdg_toplevel_decoration_v1 {
+	struct wlr_xdg_toplevel *toplevel;
 	struct {
 		struct wl_signal destroy;
 		struct wl_signal request_mode;
@@ -484,15 +489,23 @@ static uint32_t wlr_xdg_toplevel_set_size(struct wlr_xdg_toplevel *tl,
 	return 0;
 }
 
+static struct wl_listener *g_last_added_listener;
+
 static void wl_signal_add(struct wl_signal *signal, struct wl_listener *listener)
 {
-	(void)signal; (void)listener;
+	(void)signal;
+	g_last_added_listener = listener;
 }
+
+static int g_set_mode_count;
+static int g_last_mode;
 
 static void wlr_xdg_toplevel_decoration_v1_set_mode(
 	struct wlr_xdg_toplevel_decoration_v1 *deco, int mode)
 {
-	(void)deco; (void)mode;
+	(void)deco;
+	g_set_mode_count++;
+	g_last_mode = mode;
 }
 
 static struct wlr_xdg_decoration_manager_v1 *
@@ -667,6 +680,7 @@ setup(void)
 
 	test_xdg_surface.surface = &test_surface;
 	test_xdg_surface.geometry = (struct wlr_box){ 0, 0, 800, 600 };
+	test_xdg_surface.initialized = true;
 	test_toplevel.base = &test_xdg_surface;
 	test_toplevel.width = 800;
 	test_toplevel.height = 600;
@@ -3274,8 +3288,10 @@ test_xdg_decoration_init_error(void)
 static void
 test_xdg_decoration_request_mode_handler(void)
 {
+	setup();
 	struct wlr_xdg_toplevel_decoration_v1 wlr_deco;
 	memset(&wlr_deco, 0, sizeof(wlr_deco));
+	wlr_deco.toplevel = &test_toplevel;
 
 	struct wm_xdg_decoration *deco = calloc(1, sizeof(*deco));
 	assert(deco != NULL);
@@ -3283,12 +3299,58 @@ test_xdg_decoration_request_mode_handler(void)
 	deco->server = &test_server;
 	wl_list_init(&deco->destroy.link);
 	wl_list_init(&deco->request_mode.link);
+	wl_list_init(&deco->surface_commit.link);
 
-	/* Call request_mode handler — should set server-side mode (stub no-op) */
+	/* Initialized toplevel: the request sets server-side mode */
+	g_set_mode_count = 0;
 	handle_xdg_decoration_request_mode(&deco->request_mode, NULL);
+	assert(g_set_mode_count == 1);
+	assert(g_last_mode == WLR_XDG_TOPLEVEL_DECORATION_V1_MODE_SERVER_SIDE);
+
+	/* Before the initial commit, no configure may be sent */
+	test_xdg_surface.initialized = false;
+	handle_xdg_decoration_request_mode(&deco->request_mode, NULL);
+	assert(g_set_mode_count == 1);
 
 	free(deco);
 	printf("  PASS: xdg_decoration_request_mode_handler\n");
+}
+
+/* --- xdg decoration created before the initial commit --- */
+
+static void
+test_xdg_decoration_mode_deferred_to_commit(void)
+{
+	setup();
+	test_xdg_surface.initialized = false;
+	struct wlr_xdg_toplevel_decoration_v1 wlr_deco;
+	memset(&wlr_deco, 0, sizeof(wlr_deco));
+	wlr_deco.toplevel = &test_toplevel;
+
+	/* Created before the initial commit: no mode yet, wait for commit */
+	g_set_mode_count = 0;
+	g_last_added_listener = NULL;
+	handle_new_xdg_decoration(&test_server.new_xdg_decoration, &wlr_deco);
+	assert(g_set_mode_count == 0);
+	struct wl_listener *commit = g_last_added_listener;
+	assert(commit != NULL);
+	assert(commit->notify == handle_xdg_decoration_surface_commit);
+	wl_list_init(&commit->link);
+
+	/* A commit that leaves the toplevel uninitialized keeps waiting */
+	commit->notify(commit, NULL);
+	assert(g_set_mode_count == 0);
+
+	/* The initial commit sets server-side mode */
+	test_xdg_surface.initialized = true;
+	commit->notify(commit, NULL);
+	assert(g_set_mode_count == 1);
+	assert(g_last_mode == WLR_XDG_TOPLEVEL_DECORATION_V1_MODE_SERVER_SIDE);
+
+	struct wm_xdg_decoration *deco =
+		wl_container_of(commit, deco, surface_commit);
+	free(deco);
+	printf("  PASS: xdg_decoration_mode_deferred_to_commit\n");
 }
 
 /* --- xdg decoration destroy handler --- */
@@ -3306,6 +3368,7 @@ test_xdg_decoration_destroy_handler(void)
 	/* Must init links so wl_list_remove doesn't crash */
 	wl_list_init(&deco->destroy.link);
 	wl_list_init(&deco->request_mode.link);
+	wl_list_init(&deco->surface_commit.link);
 
 	/* Destroy handler frees deco */
 	handle_xdg_decoration_destroy(&deco->destroy, NULL);
@@ -3857,6 +3920,7 @@ main(void)
 	/* xdg decoration protocol */
 	test_xdg_decoration_init_error();
 	test_xdg_decoration_request_mode_handler();
+	test_xdg_decoration_mode_deferred_to_commit();
 	test_xdg_decoration_destroy_handler();
 
 	/* additional coverage: render functions */

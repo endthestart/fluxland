@@ -169,7 +169,7 @@ struct wlr_surface {
 };
 
 /* XDG shell */
-struct wlr_xdg_surface { struct wlr_surface *surface; };
+struct wlr_xdg_surface { struct wlr_surface *surface; bool initialized; };
 struct wlr_xdg_toplevel {
 	struct wlr_xdg_surface *base;
 };

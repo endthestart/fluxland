@@ -180,7 +180,7 @@ xwayland_focus_view(struct wm_xwayland_view *xview)
 	if (prev) {
 		struct wlr_xdg_toplevel *prev_toplevel =
 			wlr_xdg_toplevel_try_from_wlr_surface(prev);
-		if (prev_toplevel) {
+		if (prev_toplevel && prev_toplevel->base->initialized) {
 			wlr_xdg_toplevel_set_activated(prev_toplevel, false);
 		}
 		/* Deactivate previously focused XWayland surface */

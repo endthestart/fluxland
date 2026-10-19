@@ -68,7 +68,7 @@ wm_focus_view(struct wm_view *view, struct wlr_surface *surface)
 	if (prev_surface) {
 		struct wlr_xdg_toplevel *prev_toplevel =
 			wlr_xdg_toplevel_try_from_wlr_surface(prev_surface);
-		if (prev_toplevel) {
+		if (prev_toplevel && prev_toplevel->base->initialized) {
 			wlr_xdg_toplevel_set_activated(prev_toplevel, false);
 		}
 		/* Update decoration on previously focused view */
@@ -94,7 +94,8 @@ wm_focus_view(struct wm_view *view, struct wlr_surface *surface)
 	wlr_scene_node_raise_to_top(&view->scene_tree->node);
 
 	/* Activate the new toplevel */
-	wlr_xdg_toplevel_set_activated(view->xdg_toplevel, true);
+	if (view->xdg_toplevel->base->initialized)
+		wlr_xdg_toplevel_set_activated(view->xdg_toplevel, true);
 
 	/* Track focused view */
 	server->focused_view = view;
@@ -188,7 +189,7 @@ wm_unfocus_current(struct wm_server *server)
 	if (prev_surface) {
 		struct wlr_xdg_toplevel *prev_toplevel =
 			wlr_xdg_toplevel_try_from_wlr_surface(prev_surface);
-		if (prev_toplevel) {
+		if (prev_toplevel && prev_toplevel->base->initialized) {
 			wlr_xdg_toplevel_set_activated(prev_toplevel, false);
 		}
 	}
@@ -366,7 +367,7 @@ wm_focus_update_for_cursor(struct wm_server *server,
 			struct wlr_xdg_toplevel *prev_toplevel =
 				wlr_xdg_toplevel_try_from_wlr_surface(
 					prev_surface);
-			if (prev_toplevel) {
+			if (prev_toplevel && prev_toplevel->base->initialized) {
 				wlr_xdg_toplevel_set_activated(
 					prev_toplevel, false);
 			}
@@ -380,7 +381,9 @@ wm_focus_update_for_cursor(struct wm_server *server,
 				server->focused_view, false);
 		}
 
-		wlr_xdg_toplevel_set_activated(view->xdg_toplevel, true);
+		if (view->xdg_toplevel->base->initialized)
+			wlr_xdg_toplevel_set_activated(
+				view->xdg_toplevel, true);
 		server->focused_view = view;
 
 		/* Apply focus opacity to newly focused view */
