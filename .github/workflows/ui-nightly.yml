@@ -1,0 +1,37 @@
+name: UI tests (nightly)
+
+on:
+  schedule:
+    - cron: "17 4 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  ui:
+    name: Headless UI suite
+    runs-on: ubuntu-latest
+    container: archlinux:latest
+    steps:
+      - name: Install dependencies
+        run: |
+          pacman -Syu --noconfirm --needed base-devel git meson ninja pkgconf \
+            wlroots0.20 wayland wayland-protocols libxkbcommon libinput pixman \
+            pango cairo libdrm xcb-util-wm libpipewire gdk-pixbuf2 xorg-xwayland \
+            foot python python-pytest python-pytest-timeout \
+            python-pytest-rerunfailures python-pillow
+      - uses: actions/checkout@v4
+      - name: Build
+        run: |
+          meson setup build -Dxwayland=enabled -Dman-pages=disabled
+          meson compile -C build
+      # A few tests sleep a fixed time between steps; retry those instead of
+      # slowing every test down.
+      - name: Run the UI suite as an unprivileged user
+        run: |
+          useradd -m ci
+          chown -R ci .
+          install -d -m 700 -o ci /tmp/xdg-ci
+          su ci -c 'cd tests/ui && XDG_RUNTIME_DIR=/tmp/xdg-ci FLUXWL_TEST_HEADLESS=1 \
+            python3 -m pytest -q -p no:cacheprovider --timeout=120 --reruns 2'

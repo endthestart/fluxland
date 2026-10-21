@@ -1,0 +1,34 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build-and-test:
+    name: Build and test (Arch, wlroots 0.20)
+    runs-on: ubuntu-latest
+    container: archlinux:latest
+    steps:
+      - name: Install dependencies
+        run: |
+          pacman -Syu --noconfirm --needed base-devel git meson ninja pkgconf \
+            wlroots0.20 wayland wayland-protocols libxkbcommon libinput pixman \
+            pango cairo libdrm xcb-util-wm libpipewire gdk-pixbuf2 xorg-xwayland
+      - uses: actions/checkout@v4
+      - name: Configure
+        run: meson setup build -Dxwayland=enabled -Dman-pages=disabled -Dwarning_level=2
+      - name: Build
+        run: meson compile -C build
+      # The headless compositor tests refuse to run as root.
+      - name: Test as an unprivileged user
+        run: |
+          useradd -m ci
+          chown -R ci .
+          install -d -m 700 -o ci /tmp/xdg-ci
+          su ci -c 'XDG_RUNTIME_DIR=/tmp/xdg-ci meson test -C build --print-errorlogs'
