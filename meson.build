@@ -408,18 +408,13 @@ install_data(
   install_dir: get_option('datadir') / 'fluxwl' / 'examples',
 )
 
-# --- Bundled styles (standalone + community + upstream Fluxbox) ---
+# --- Bundled styles (standalone + upstream Fluxbox) ---
 
 install_data(
   'examples/styles/default.style',
   'examples/styles/hc-dark.style',
   'examples/styles/hc-light.style',
   'examples/styles/wave.style',
-  install_dir: get_option('datadir') / 'fluxwl' / 'styles',
-)
-
-install_subdir(
-  'examples/styles/community',
   install_dir: get_option('datadir') / 'fluxwl' / 'styles',
 )
 

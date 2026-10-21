@@ -25,6 +25,11 @@ First release of **fluxwl**, the maintained fork of fluxland 1.1.0.
 - Global listeners are removed before display teardown, so exit no longer aborts.
 - `meson setup` works on a fresh clone; test_ipc_server and test_perf build.
 
+### Removed
+- The 10 box-look.org community styles and their screenshots: five are
+  CC BY-NC-SA 1.0 and five state no licence. They still work when installed in
+  `~/.config/fluxwl/styles/`.
+
 ## [1.1.0] - 2026-03-03
 
 ### Added

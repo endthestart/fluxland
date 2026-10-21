@@ -2,7 +2,9 @@
 
 fluxwl natively supports Fluxbox style files. Styles from
 [box-look.org](https://www.box-look.org/browse?cat=139&ord=latest) and other
-Fluxbox style archives work without modification.
+Fluxbox style archives work without modification; install them in
+`~/.config/fluxwl/styles/`. fluxwl bundles only styles whose licence allows
+redistribution.
 
 ## The Great Wave
 
@@ -16,88 +18,11 @@ Style file: [`examples/styles/wave.style`](../examples/styles/wave.style)
 
 ## Table of Contents
 
-**Community Styles** (10) — [Carbonit](#carbonit) | [Neon](#neon) | [Soft White](#soft-white) | [Raven](#raven) | [Graphite](#graphite) | [Clear](#clear) | [Plastick](#plastick) | [Black Glass](#black-glass) | [Coffee Dream](#coffee-dream) | [blackdelux](#blackdelux)
-
 **Upstream Styles — Pixmap** (13) — [arch](#arch) | [bloe](#bloe) | [BlueFlux](#blueflux) | [bora_black](#bora_black) | [bora_blue](#bora_blue) | [bora_green](#bora_green) | [carp](#carp) | [Emerge](#emerge) | [green_tea](#green_tea) | [ostrich](#ostrich) | [zimek_bisque](#zimek_bisque) | [zimek_darkblue](#zimek_darkblue) | [zimek_green](#zimek_green)
 
 **Upstream Styles — Gradient/Solid** (14) — [Artwiz](#artwiz) | [BlueNight](#bluenight) | [Flux](#flux) | [LemonSpace](#lemonspace) | [Makro](#makro) | [MerleyKay](#merleykay) | [Meta](#meta) | [Nyz](#nyz) | [Operation](#operation) | [Outcomes](#outcomes) | [qnx-photon](#qnx-photon) | [Results](#results) | [Shade](#shade) | [Twice](#twice)
 
 **Reference** — [Using Styles](#using-styles) | [Style Rendering Support](#style-rendering-support)
-
-## Community Styles
-
-10 community styles from box-look.org tested and verified on fluxwl. These
-styles are included in [`examples/styles/community/`](../examples/styles/community/).
-
-### [Carbonit](https://www.box-look.org/p/1016944/)
-
-Dark style with subtle pixmap textures on titlebars and buttons.
-[`examples/styles/community/Carbonit/`](../examples/styles/community/Carbonit/)
-
-![Carbonit](screenshots/styles/Carbonit.png)
-
-### [Neon](https://www.box-look.org/p/1016708/)
-
-Dark style with neon-accented window decorations and black menus.
-[`examples/styles/community/Neon/`](../examples/styles/community/Neon/)
-
-![Neon](screenshots/styles/Neon.png)
-
-### [Soft White](https://www.box-look.org/p/1017014/)
-
-Light style with white/grey pixmap titlebar and warm grey menus.
-[`examples/styles/community/Soft_White/`](../examples/styles/community/Soft_White/)
-
-![Soft White](screenshots/styles/Soft_White.png)
-
-### [Raven](https://www.box-look.org/p/1017008/)
-
-Dark style with bold white text, black menus, and beveled decorations.
-[`examples/styles/community/Raven/`](../examples/styles/community/Raven/)
-
-![Raven](screenshots/styles/Raven.png)
-
-### [Graphite](https://www.box-look.org/p/1016816/)
-
-Clean gradient-based style with diamond bullet markers and styled window buttons.
-[`examples/styles/community/Graphite/`](../examples/styles/community/Graphite/)
-
-![Graphite](screenshots/styles/Graphite.png)
-
-### [Clear](https://www.box-look.org/p/1016899/)
-
-Light blue/cream style with raised bevels, triangle bullet markers, and styled buttons.
-[`examples/styles/community/Clear/`](../examples/styles/community/Clear/)
-
-![Clear](screenshots/styles/Clear.png)
-
-### [Plastick](https://www.box-look.org/p/1016818/)
-
-Green/olive style with distinctive pixmap titlebar textures and button icons.
-[`examples/styles/community/Plastick/`](../examples/styles/community/Plastick/)
-
-![Plastick](screenshots/styles/Plastick.png)
-
-### [Black Glass](https://www.box-look.org/p/1017007/)
-
-Dark glass style with gradient titlebars, styled handles, and wide borders.
-[`examples/styles/community/Black_glass/`](../examples/styles/community/Black_glass/)
-
-![Black Glass](screenshots/styles/Black_Glass.png)
-
-### [Coffee Dream](https://www.box-look.org/p/1016989/)
-
-Warm brown/coffee palette with left-aligned title text and muted tones.
-[`examples/styles/community/CoffeeDream/`](../examples/styles/community/CoffeeDream/)
-
-![Coffee Dream](screenshots/styles/CoffeeDream.png)
-
-### [blackdelux](https://www.box-look.org/p/1016962/)
-
-Minimal dark style with thin borders and teal menu title accent.
-[`examples/styles/community/blackdelux/`](../examples/styles/community/blackdelux/)
-
-![blackdelux](screenshots/styles/blackdelux.png)
 
 ## Upstream Styles
 
@@ -302,10 +227,9 @@ Dark red/maroon style with diagonal gradients and grey labels.
 
 ### Install a bundled style
 
-Copy a community or upstream style directory to your styles path:
+Copy a bundled style directory to your styles path:
 
 ```sh
-cp -r examples/styles/community/Graphite ~/.config/fluxwl/styles/
 cp -r examples/styles/upstream/BlueFlux ~/.config/fluxwl/styles/
 ```
 
@@ -314,7 +238,7 @@ cp -r examples/styles/upstream/BlueFlux ~/.config/fluxwl/styles/
 Switch styles without restarting via IPC:
 
 ```sh
-fluxwl-ctl action SetStyle ~/.config/fluxwl/styles/Graphite
+fluxwl-ctl action SetStyle ~/.config/fluxwl/styles/BlueFlux
 ```
 
 Or use the Styles submenu in the root menu — it lists all styles found in

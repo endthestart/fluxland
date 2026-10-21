@@ -11,7 +11,7 @@ The fork continues from upstream commit `32d1009` (fluxland 1.1.0, released
 - Changes made in this fork are © 2026 the fluxwl contributors, under the same
   MIT terms.
 - The bundled styles keep whatever credits and licence statements their headers
-  carry. Fluxbox's own styles come from the Fluxbox tree, and some of those
-  carry CC BY-SA 3.0 notices. The community styles come from box-look.org.
-  Their licences are being audited before the first fluxwl release; any style
-  without a clear licence that allows redistribution will be removed.
+  carry. They come from the Fluxbox tree, and some of them carry CC BY-SA 3.0
+  notices. The 10 box-look.org community styles that fluxland bundled are not in
+  fluxwl: five are CC BY-NC-SA 1.0, which forbids commercial use, and five state no
+  licence. They still work if a user installs them.
