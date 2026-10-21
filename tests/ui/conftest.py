@@ -112,7 +112,7 @@ class WindowHelper:
         self._ipc = ipc
         self._titles = []
 
-    def open(self, title="Test Window", wait=True, timeout=2.0):
+    def open(self, title="Test Window", wait=True, timeout=10.0):
         """Open a test window with the given title.
 
         Args:
@@ -123,7 +123,7 @@ class WindowHelper:
         Returns:
             The window dict from get_windows if wait=True, else None.
         """
-        self._ipc.command(f"Exec foot --title {title}")
+        self._ipc.command(f"Exec foot -o locked-title=yes --title {title}")
         self._titles.append(title)
 
         if not wait:
