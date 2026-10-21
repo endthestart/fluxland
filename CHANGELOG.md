@@ -5,6 +5,26 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+First release of **fluxwl**, the maintained fork of fluxland 1.1.0.
+
+### Changed
+- Renamed fluxland to fluxwl: binaries, session files, man pages, data directory,
+  IPC socket and environment variables. `~/.config/fluxland`,
+  `FLUXLAND_CONFIG_DIR` and `FLUXLAND_SOCK` still work.
+- Ported to wlroots 0.20. **wlroots 0.18 is no longer supported.**
+
+### Fixed
+- Drag-to-tab finds the window underneath the dragged one.
+- A window dropped onto a tab group is shown and focused.
+- `toolbar.tools` accepts Fluxbox's comma-separated list.
+- Docked views stay out of the icon bar.
+- No configure is sent to xdg toplevels before they're initialized, so the
+  first xdg-decoration window no longer aborts the compositor.
+- Global listeners are removed before display teardown, so exit no longer aborts.
+- `meson setup` works on a fresh clone; test_ipc_server and test_perf build.
+
 ## [1.1.0] - 2026-03-03
 
 ### Added

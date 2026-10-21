@@ -1,10 +1,25 @@
 # fluxwl
 
-A lightweight, highly configurable Wayland compositor inspired by [Fluxbox](http://fluxbox.org/).
+**A maintained fork of [ecliptik/fluxland](https://github.com/ecliptik/fluxland)**, a
+lightweight, highly configurable Wayland compositor inspired by
+[Fluxbox](http://fluxbox.org/).
 
-[![Build](https://img.shields.io/github/actions/workflow/status/ecliptik/fluxland/ui-tests.yml)](https://github.com/ecliptik/fluxland/actions)
-[![License](https://img.shields.io/github/license/ecliptik/fluxland)](LICENSE)
-[![Version](https://img.shields.io/github/v/release/ecliptik/fluxland)](https://github.com/ecliptik/fluxland/releases)
+> Upstream's last release is fluxland 1.1.0 (March 2026), built on wlroots 0.18,
+> and the upstream repository doesn't accept pull requests or issues. This fork
+> carries it forward:
+>
+> - fluxwl runs on **wlroots 0.20**, so it builds on Arch Linux, CachyOS and other current distros
+> - Fluxbox behaviours are fixed: drag-to-tab onto any window, a dropped tab
+>   keeps focus, comma-separated `toolbar.tools`, and dockapps stay out of the
+>   icon bar
+> - the full test suite passes
+>
+> Configs from fluxland keep working: fluxwl reads `~/.config/fluxland` when
+> `~/.config/fluxwl` doesn't exist. Bugs and pull requests are welcome here. All
+> credit for fluxland goes to its author and contributors; see [NOTICE.md](NOTICE.md).
+
+[![CI](https://img.shields.io/github/actions/workflow/status/endthestart/fluxwl/ci.yml?branch=main)](https://github.com/endthestart/fluxwl/actions)
+[![License](https://img.shields.io/github/license/endthestart/fluxwl)](LICENSE)
 
 ---
 
