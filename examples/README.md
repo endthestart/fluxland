@@ -1,19 +1,19 @@
-# fluxland Examples
+# fluxwl Examples
 
-Example configurations and styles for fluxland. Each example only contains
+Example configurations and styles for fluxwl. Each example only contains
 files that differ from the defaults in `data/`. To use an example, first copy
 the defaults, then overlay the example-specific files:
 
 ```sh
-mkdir -p ~/.config/fluxland
-cp data/* ~/.config/fluxland/
-cp examples/wave-desktop/* ~/.config/fluxland/
-chmod +x ~/.config/fluxland/startup
+mkdir -p ~/.config/fluxwl
+cp data/* ~/.config/fluxwl/
+cp examples/wave-desktop/* ~/.config/fluxwl/
+chmod +x ~/.config/fluxwl/startup
 ```
 
 ## Styles
 
-Ready-to-use style files in `styles/`. Copy to `~/.config/fluxland/style`
+Ready-to-use style files in `styles/`. Copy to `~/.config/fluxwl/style`
 or point `session.styleFile` in your `init` to the path.
 
 | Style | Description |
@@ -28,10 +28,10 @@ or point `session.styleFile` in your `init` to the path.
 Copy the style file:
 
 ```sh
-cp examples/styles/wave.style ~/.config/fluxland/style
+cp examples/styles/wave.style ~/.config/fluxwl/style
 ```
 
-Or set the path in `~/.config/fluxland/init`:
+Or set the path in `~/.config/fluxwl/init`:
 
 ```
 session.styleFile: /path/to/wave.style
@@ -51,11 +51,11 @@ A themed desktop inspired by *The Great Wave off Kanagawa*. Overrides `init`
 wallpaper via swaybg).
 
 ```sh
-cp data/* ~/.config/fluxland/
-cp examples/wave-desktop/* ~/.config/fluxland/
-mkdir -p ~/.config/fluxland/styles
-cp examples/styles/wave.style ~/.config/fluxland/styles/
-chmod +x ~/.config/fluxland/startup
+cp data/* ~/.config/fluxwl/
+cp examples/wave-desktop/* ~/.config/fluxwl/
+mkdir -p ~/.config/fluxwl/styles
+cp examples/styles/wave.style ~/.config/fluxwl/styles/
+chmod +x ~/.config/fluxwl/startup
 ```
 
 **Prerequisites:** Install `swaybg` and download a Great Wave wallpaper to
@@ -68,9 +68,9 @@ settings) and `startup` (minimal startup). Four workspaces, click-to-focus,
 and a solid dark background. Start here and customize.
 
 ```sh
-cp data/* ~/.config/fluxland/
-cp examples/minimal/* ~/.config/fluxland/
-chmod +x ~/.config/fluxland/startup
+cp data/* ~/.config/fluxwl/
+cp examples/minimal/* ~/.config/fluxwl/
+chmod +x ~/.config/fluxwl/startup
 ```
 
 ### sloppy-focus
@@ -80,9 +80,9 @@ Focus follows the mouse pointer with auto-raise after 400ms. Overrides `init`
 not to click windows to focus them.
 
 ```sh
-cp data/* ~/.config/fluxland/
-cp examples/sloppy-focus/* ~/.config/fluxland/
-chmod +x ~/.config/fluxland/startup
+cp data/* ~/.config/fluxwl/
+cp examples/sloppy-focus/* ~/.config/fluxwl/
+chmod +x ~/.config/fluxwl/startup
 ```
 
 ## Customizing
@@ -90,8 +90,8 @@ chmod +x ~/.config/fluxland/startup
 All configuration files are documented with inline comments. See the man
 pages for full format documentation:
 
-- `man fluxland` -- compositor usage
-- `man fluxland-keys` -- keybinding format
-- `man fluxland-apps` -- per-window rules
-- `man fluxland-style` -- style format
-- `man fluxland-menu` -- menu format
+- `man fluxwl` -- compositor usage
+- `man fluxwl-keys` -- keybinding format
+- `man fluxwl-apps` -- per-window rules
+- `man fluxwl-style` -- style format
+- `man fluxwl-menu` -- menu format

@@ -1,5 +1,5 @@
 /*
- * test_multi_client.c - Multi-client integration tests for fluxland
+ * test_multi_client.c - Multi-client integration tests for fluxwl
  *
  * Tests that exercise multiple Wayland client connections against the
  * same headless compositor, verifying focus switching, stacking order,

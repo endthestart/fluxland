@@ -1,5 +1,5 @@
 /*
- * fluxland - A Fluxbox-inspired Wayland compositor
+ * fluxwl - A Fluxbox-inspired Wayland compositor
  * Copyright (c) 2025 fluxland contributors
  * SPDX-License-Identifier: MIT
  *
@@ -33,7 +33,7 @@ enum wlr_log_importance { WLR_SILENT = 0, WLR_ERROR = 1, WLR_INFO = 2, WLR_DEBUG
 /* Test helpers                                                       */
 /* ------------------------------------------------------------------ */
 
-#define TEST_DIR "/tmp/fluxland-test"
+#define TEST_DIR "/tmp/fluxwl-test"
 #define TEST_FILE TEST_DIR "/test_util_file"
 #define TEST_LINK TEST_DIR "/test_util_symlink"
 

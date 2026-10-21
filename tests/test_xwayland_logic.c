@@ -44,7 +44,7 @@
 /* xcb */
 #define __XCB_H__
 
-/* fluxland */
+/* fluxwl */
 #define WM_SERVER_H
 #define WM_SLIT_H
 #define WM_VIEW_H
@@ -436,7 +436,7 @@ static void wlr_xdg_toplevel_set_activated(struct wlr_xdg_toplevel *tl,
 	(void)tl; (void)activated;
 }
 
-/* --- Stub fluxland types and functions --- */
+/* --- Stub fluxwl types and functions --- */
 
 /* Cursor mode enum */
 enum wm_cursor_mode {

@@ -29,7 +29,7 @@
 #define WLR_TYPES_WLR_EXPORT_DMABUF_V1_H
 #define WLR_UTIL_LOG_H
 
-/* fluxland headers */
+/* fluxwl headers */
 #define WM_SERVER_H
 #define WM_SCREENCOPY_H
 

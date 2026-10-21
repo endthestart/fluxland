@@ -1,13 +1,13 @@
-# Fluxland UI Test Harness
+# fluxwl UI Test Harness
 
-Automated UI/UX testing for the fluxland Wayland compositor. Uses IPC commands
+Automated UI/UX testing for the fluxwl Wayland compositor. Uses IPC commands
 to drive the compositor in headless mode and verify behavior.
 
 ## Prerequisites
 
 - Python 3.10+
 - pytest
-- A built fluxland binary (in `build/` or on PATH)
+- A built fluxwl binary (in `build/` or on PATH)
 - `foot` terminal emulator (for test windows)
 
 ## Quick Start
@@ -83,5 +83,5 @@ Test configs live in `configs/`:
 
 ## Environment Variables
 
-- `FLUXLAND_TEST_HEADLESS=1` — Force headless mode
+- `FLUXWL_TEST_HEADLESS=1` — Force headless mode
 - `WAYLAND_DISPLAY` — If set and not headless, connects to live session

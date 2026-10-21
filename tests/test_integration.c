@@ -71,21 +71,21 @@ setup_paths(void)
 {
 	/* Use a unique directory under /tmp owned by our uid */
 	snprintf(test_base, sizeof(test_base),
-		 "/tmp/fluxland-test/wm-integration-test-%d", getpid());
+		 "/tmp/fluxwl-test/wm-integration-test-%d", getpid());
 	snprintf(test_runtime, sizeof(test_runtime),
 		 "%s/runtime", test_base);
 	snprintf(test_config_home, sizeof(test_config_home),
 		 "%s/config", test_base);
 	snprintf(test_config_dir, sizeof(test_config_dir),
-		 "%s/config/fluxland", test_base);
+		 "%s/config/fluxwl", test_base);
 	snprintf(test_init_file, sizeof(test_init_file),
-		 "%s/config/fluxland/init", test_base);
+		 "%s/config/fluxwl/init", test_base);
 }
 
 static void
 write_minimal_config(void)
 {
-	mkdir("/tmp/fluxland-test", 0755);
+	mkdir("/tmp/fluxwl-test", 0755);
 	mkdir(test_base, 0755);
 	mkdir(test_runtime, 0700);
 	mkdir(test_config_home, 0755);
@@ -115,7 +115,7 @@ cleanup(void)
 
 	/* Clean up IPC socket */
 	char ipc_path[512];
-	snprintf(ipc_path, sizeof(ipc_path), "%s/fluxland-ipc.sock",
+	snprintf(ipc_path, sizeof(ipc_path), "%s/fluxwl-ipc.sock",
 		 test_runtime);
 	unlink(ipc_path);
 
@@ -166,12 +166,12 @@ main(void)
 	 * (for meson test), then fall back to PATH.
 	 */
 	const char *compositor_bin = NULL;
-	if (access("/tmp/fluxland-test/wm-build/fluxland", X_OK) == 0)
-		compositor_bin = "/tmp/fluxland-test/wm-build/fluxland";
-	else if (access("../fluxland", X_OK) == 0)
-		compositor_bin = "../fluxland";
+	if (access("/tmp/fluxwl-test/wm-build/fluxwl", X_OK) == 0)
+		compositor_bin = "/tmp/fluxwl-test/wm-build/fluxwl";
+	else if (access("../fluxwl", X_OK) == 0)
+		compositor_bin = "../fluxwl";
 	else
-		compositor_bin = "fluxland";
+		compositor_bin = "fluxwl";
 
 	printf("  Starting compositor (headless)...\n");
 	printf("  Binary: %s\n", compositor_bin);
@@ -197,7 +197,7 @@ main(void)
 		freopen("/dev/null", "w", stdout);
 		freopen("/dev/null", "w", stderr);
 
-		execl(compositor_bin, "fluxland", (char *)NULL);
+		execl(compositor_bin, "fluxwl", (char *)NULL);
 		/* If exec fails, exit with a distinguishable code */
 		_exit(127);
 	}

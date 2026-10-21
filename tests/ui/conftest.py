@@ -1,8 +1,8 @@
-"""Pytest fixtures for fluxland UI tests.
+"""Pytest fixtures for fluxwl UI tests.
 
 Provides session-scoped compositor management and per-test IPC, screenshot,
 and input driver fixtures. Supports both live session testing (default) and
-headless mode (set FLUXLAND_TEST_HEADLESS=1).
+headless mode (set FLUXWL_TEST_HEADLESS=1).
 """
 
 import os
@@ -45,10 +45,10 @@ def pytest_addoption(parser):
 def compositor():
     """Session-scoped compositor instance.
 
-    In live mode (default): connects to the running fluxland session.
-    In headless mode (FLUXLAND_TEST_HEADLESS=1): starts a headless compositor.
+    In live mode (default): connects to the running fluxwl session.
+    In headless mode (FLUXWL_TEST_HEADLESS=1): starts a headless compositor.
     """
-    headless = os.environ.get("FLUXLAND_TEST_HEADLESS", "0") == "1"
+    headless = os.environ.get("FLUXWL_TEST_HEADLESS", "0") == "1"
 
     # Auto-detect: if no WAYLAND_DISPLAY is set, must use headless mode
     if not headless and not os.environ.get("WAYLAND_DISPLAY"):

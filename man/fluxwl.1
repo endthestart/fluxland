@@ -1,8 +1,8 @@
-.TH FLUXLAND 1 "2026-03-03" "fluxland 1.1.0" "General Commands Manual"
+.TH FLUXWL 1 "2026-03-03" "fluxwl 1.1.0" "General Commands Manual"
 .SH NAME
-fluxland \- a Fluxbox-inspired Wayland compositor
+fluxwl \- a Fluxbox-inspired Wayland compositor
 .SH SYNOPSIS
-.B fluxland
+.B fluxwl
 .RB [ \-s
 .IR command ]
 .RB [ \-c ]
@@ -12,7 +12,7 @@ fluxland \- a Fluxbox-inspired Wayland compositor
 .RB [ \-\-ipc\-no\-exec ]
 .RB [ \-h ]
 .SH DESCRIPTION
-.B fluxland
+.B fluxwl
 is a Wayland compositor built on wlroots that provides a traditional
 stacking window management experience inspired by Fluxbox.
 It features tabbed windows, configurable key bindings with chains and
@@ -72,14 +72,14 @@ The Wayland socket is created in this directory.
 .TP
 .B XDG_CONFIG_HOME
 If set, configuration files are searched for in
-.IR $XDG_CONFIG_HOME/fluxland/ .
+.IR $XDG_CONFIG_HOME/fluxwl/ .
 .TP
-.B FLUXLAND_CONFIG_DIR
+.B FLUXWL_CONFIG_DIR
 If set, overrides all other configuration directory search paths.
 .TP
 .B HOME
 Used as a fallback to locate
-.IR ~/.config/fluxland/ .
+.IR ~/.config/fluxwl/ .
 .SH SIGNALS
 .TP
 .B SIGHUP
@@ -97,9 +97,9 @@ Configuration files are searched in the following order:
 .PP
 .RS 4
 .nf
-$FLUXLAND_CONFIG_DIR/
-$XDG_CONFIG_HOME/fluxland/
-~/.config/fluxland/
+$FLUXWL_CONFIG_DIR/
+$XDG_CONFIG_HOME/fluxwl/
+~/.config/fluxwl/
 ~/.fluxbox/     (Fluxbox compatibility fallback)
 .fi
 .RE
@@ -111,27 +111,27 @@ Main configuration file using X resource database syntax.
 Controls workspaces, focus policy, placement, toolbar, XKB keyboard
 layout, and paths to other configuration files.
 See
-.BR fluxland-init (5).
+.BR fluxwl-init (5).
 .TP
 .B keys
 Key binding definitions.
 See
-.BR fluxland-keys (5).
+.BR fluxwl-keys (5).
 .TP
 .B apps
 Per-window rules for automatic placement, decoration, and tab grouping.
 See
-.BR fluxland-apps (5).
+.BR fluxwl-apps (5).
 .TP
 .B menu
 Root menu definition.
 See
-.BR fluxland-menu (5).
+.BR fluxwl-menu (5).
 .TP
 .B styles/default
 Default style file.
 See
-.BR fluxland-style (5).
+.BR fluxwl-style (5).
 .TP
 .B startup
 Shell script executed on compositor startup.
@@ -142,7 +142,7 @@ The
 .B WAYLAND_DISPLAY
 environment variable is set before the script runs.
 See
-.BR fluxland-startup (5).
+.BR fluxwl-startup (5).
 .SH EMERGENCY KEYBINDINGS
 The following keybindings are always active, regardless of key binding
 configuration, keymodes, or keyboard shortcut inhibition:
@@ -274,7 +274,7 @@ Start the compositor with a terminal on startup:
 .PP
 .RS 4
 .nf
-fluxland \-s foot
+fluxwl \-s foot
 .fi
 .RE
 .PP
@@ -282,7 +282,7 @@ Start with debug logging:
 .PP
 .RS 4
 .nf
-fluxland \-d
+fluxwl \-d
 .fi
 .RE
 .PP
@@ -300,12 +300,12 @@ session.xkb.options: grp:alt_shift_toggle,caps:escape
 .fi
 .RE
 .SH SEE ALSO
-.BR fluxland-ctl (1),
-.BR fluxland-keys (5),
-.BR fluxland-apps (5),
-.BR fluxland-init (5),
-.BR fluxland-menu (5),
-.BR fluxland-startup (5),
-.BR fluxland-style (5)
+.BR fluxwl-ctl (1),
+.BR fluxwl-keys (5),
+.BR fluxwl-apps (5),
+.BR fluxwl-init (5),
+.BR fluxwl-menu (5),
+.BR fluxwl-startup (5),
+.BR fluxwl-style (5)
 .SH AUTHORS
-The fluxland project.
+The fluxwl project.

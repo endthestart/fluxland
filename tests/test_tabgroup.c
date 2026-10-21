@@ -195,7 +195,7 @@ wlr_xdg_toplevel_set_size(struct wlr_xdg_toplevel *toplevel,
 	return 0;
 }
 
-/* --- Stub fluxland functions --- */
+/* --- Stub fluxwl functions --- */
 
 static void
 wm_decoration_update(struct wm_decoration *decoration,

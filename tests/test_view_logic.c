@@ -45,7 +45,7 @@
 #define WLR_RENDER_ALLOCATOR_H
 #define WLR_RENDER_WLR_RENDERER_H
 
-/* fluxland */
+/* fluxwl */
 #define WM_ANIMATION_H
 #define WM_CONFIG_H
 #define WM_DECORATION_H
@@ -343,7 +343,7 @@ struct wlr_allocator;
 struct wlr_compositor;
 struct wlr_subcompositor;
 
-/* --- Stub fluxland types --- */
+/* --- Stub fluxwl types --- */
 
 /* Focus protection flags from rules.h */
 #define WM_FOCUS_PROT_GAIN   0x01
@@ -943,7 +943,7 @@ wlr_output_layout_get_box(struct wlr_output_layout *layout,
 	box->width = 1920; box->height = 1080;
 }
 
-/* --- Stub fluxland functions --- */
+/* --- Stub fluxwl functions --- */
 
 static struct wm_animation *
 wm_animation_start(struct wm_view *view, enum wm_animation_type type,

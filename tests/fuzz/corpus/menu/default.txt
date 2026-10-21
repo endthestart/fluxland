@@ -1,4 +1,4 @@
-[begin] (fluxland)
+[begin] (fluxwl)
   [submenu] (Terminals)
     [exec] (foot) {foot}
     [exec] (Alacritty) {alacritty}
@@ -12,7 +12,7 @@
   [workspaces] (Workspaces)
   [config] (Configuration)
   [separator]
-  [submenu] (fluxland)
+  [submenu] (fluxwl)
     [reconfig] (Reload Config)
     [restart] (Restart)
     [separator]

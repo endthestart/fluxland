@@ -77,14 +77,14 @@ void wm_decoration_update(struct wm_decoration *deco, struct wm_style *style)
 enum wm_action wm_action_from_name(const char *name)
 	{ (void)name; return WM_ACTION_NOP; }
 
-#define TEST_DIR "/tmp/fluxland-test/wm-test-menu"
+#define TEST_DIR "/tmp/fluxwl-test/wm-test-menu"
 #define TEST_MENU TEST_DIR "/menu"
 #define TEST_INCLUDE TEST_DIR "/include_menu"
 
 static void
 setup(void)
 {
-	mkdir("/tmp/fluxland-test", 0755);
+	mkdir("/tmp/fluxwl-test", 0755);
 	mkdir(TEST_DIR, 0755);
 }
 
@@ -144,7 +144,7 @@ static void
 test_load_nonexistent(void)
 {
 	struct wm_menu *menu = wm_menu_load(NULL,
-		"/tmp/fluxland-test/nonexistent_menu_file");
+		"/tmp/fluxwl-test/nonexistent_menu_file");
 	assert(menu == NULL);
 	printf("  PASS: test_load_nonexistent\n");
 }
@@ -356,7 +356,7 @@ test_simple_tags(void)
 		"[config] (Configuration)\n"
 		"[workspaces] (Workspaces)\n"
 		"[reconfig] (Reload)\n"
-		"[restart] (Restart) {fluxland}\n"
+		"[restart] (Restart) {fluxwl}\n"
 		"[exit] (Quit)\n"
 		"[end]\n"
 	);
@@ -380,7 +380,7 @@ test_simple_tags(void)
 	assert(item->type == WM_MENU_RESTART);
 	assert(strcmp(item->label, "Restart") == 0);
 	assert(item->command != NULL);
-	assert(strcmp(item->command, "fluxland") == 0);
+	assert(strcmp(item->command, "fluxwl") == 0);
 
 	item = get_item(menu, 4);
 	assert(item->type == WM_MENU_EXIT);
@@ -460,7 +460,7 @@ static void
 test_complex_menu(void)
 {
 	write_file(TEST_MENU,
-		"[begin] (fluxland)\n"
+		"[begin] (fluxwl)\n"
 		"[exec] (Terminal) {foot}\n"
 		"[exec] (Files) {nautilus}\n"
 		"[separator]\n"
@@ -479,7 +479,7 @@ test_complex_menu(void)
 
 	struct wm_menu *menu = wm_menu_load(NULL, TEST_MENU);
 	assert(menu != NULL);
-	assert(strcmp(menu->title, "fluxland") == 0);
+	assert(strcmp(menu->title, "fluxwl") == 0);
 	assert(count_items(menu) == 10);
 
 	/* Verify structure */

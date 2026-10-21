@@ -1,4 +1,4 @@
-"""TC-CFG: Configuration tests for fluxland compositor."""
+"""TC-CFG: Configuration tests for fluxwl compositor."""
 
 import time
 import pytest

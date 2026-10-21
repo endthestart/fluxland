@@ -65,7 +65,7 @@ static char diff_dir[1024];
 static void
 setup(void)
 {
-	const char *base = "/tmp/fluxland-test";
+	const char *base = "/tmp/fluxwl-test";
 	mkdir(base, 0755);
 
 	snprintf(ref_dir, sizeof(ref_dir), "%s/visual-ref", base);
@@ -554,7 +554,7 @@ test_titlebar_composition(void)
 
 	int tw = 0, th = 0;
 	cairo_surface_t *text = wm_render_text(
-		"fluxland", &font, &text_color, width - 40, &tw, &th,
+		"fluxwl", &font, &text_color, width - 40, &tw, &th,
 		WM_JUSTIFY_CENTER, 1.0f);
 	if (text) {
 		int text_x = (width - tw) / 2;

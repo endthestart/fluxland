@@ -1,9 +1,9 @@
-# fluxland sloppy-focus configuration
+# fluxwl sloppy-focus configuration
 # Focus follows the mouse pointer, with auto-raise after a short delay.
 # Good for users who prefer not to click windows to focus them.
 #
 # Usage:
-#   cp -r examples/sloppy-focus/* ~/.config/fluxland/
+#   cp -r examples/sloppy-focus/* ~/.config/fluxwl/
 
 # -------------------------------------------------------------------
 # Workspaces

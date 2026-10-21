@@ -1,6 +1,6 @@
 """Tests for accessibility features via IPC.
 
-Verifies that fluxland exposes sufficient information for screen readers
+Verifies that fluxwl exposes sufficient information for screen readers
 and assistive technology via its IPC protocol, and that the accessibility
 meta-subscription covers the expected event categories.
 """
@@ -14,7 +14,7 @@ SETTLE = 0.2
 
 _PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 STYLE_DEFAULT = os.path.join(_PROJECT_ROOT, "data", "style")
-STYLE_HC_DARK = os.path.join(_PROJECT_ROOT, "data", "fluxland-hc-dark.style")
+STYLE_HC_DARK = os.path.join(_PROJECT_ROOT, "data", "fluxwl-hc-dark.style")
 
 
 class TestAccessibilitySubscription:

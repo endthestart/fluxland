@@ -98,13 +98,13 @@ wlr_xdg_toplevel_set_maximized(struct wlr_xdg_toplevel *toplevel,
 	return 0;
 }
 
-#define TEST_DIR "/tmp/fluxland-test/wm-test-rules"
+#define TEST_DIR "/tmp/fluxwl-test/wm-test-rules"
 #define TEST_APPS TEST_DIR "/apps"
 
 static void
 setup(void)
 {
-	mkdir("/tmp/fluxland-test", 0755);
+	mkdir("/tmp/fluxwl-test", 0755);
 	mkdir(TEST_DIR, 0755);
 }
 
@@ -246,7 +246,7 @@ test_load_nonexistent(void)
 	struct wm_rules rules;
 	wm_rules_init(&rules);
 
-	bool ret = wm_rules_load(&rules, "/tmp/fluxland-test/nonexistent_apps_file");
+	bool ret = wm_rules_load(&rules, "/tmp/fluxwl-test/nonexistent_apps_file");
 	assert(ret == false);
 
 	wm_rules_finish(&rules);

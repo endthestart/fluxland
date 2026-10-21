@@ -1,4 +1,4 @@
-"""HTML and JSON test report generator for fluxland UI tests.
+"""HTML and JSON test report generator for fluxwl UI tests.
 
 Generates human-readable HTML reports and machine-readable JSON summaries
 from pytest test results. Integrated via conftest.py hooks.
@@ -150,7 +150,7 @@ _HTML_TEMPLATE = """\
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>Fluxland UI Test Report</title>
+<title>fluxwl UI Test Report</title>
 <style>
 body {{ font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; margin: 2em; background: #fafafa; color: #333; }}
 h1 {{ margin-bottom: 0.2em; }}
@@ -173,7 +173,7 @@ pre.msg {{ margin: 0.3em 0 0; font-size: 0.85em; white-space: pre-wrap; max-widt
 </style>
 </head>
 <body>
-<h1>Fluxland UI Test Report</h1>
+<h1>fluxwl UI Test Report</h1>
 <p class="summary">
   {timestamp} &mdash; {duration}<br>
   <span class="pass">{passed} passed</span> &middot;

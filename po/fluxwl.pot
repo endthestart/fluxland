@@ -1,12 +1,12 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the fluxland package.
+# This file is distributed under the same license as the fluxwl package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: fluxland 1.1.0\n"
+"Project-Id-Version: fluxwl 1.1.0\n"
 "Report-Msgid-Bugs-To: https://github.com/ecliptik/fluxland/issues\n"
 "POT-Creation-Date: 2026-03-02 08:12-0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
@@ -24,31 +24,31 @@ msgstr ""
 
 #: src/config.c:249
 #, c-format
-msgid "[fluxland] config directory path contains '..': %s\n"
+msgid "[fluxwl] config directory path contains '..': %s\n"
 msgstr ""
 
 #: src/config.c:262
 #, c-format
-msgid "[fluxland] config path is not a directory: %s\n"
+msgid "[fluxwl] config path is not a directory: %s\n"
 msgstr ""
 
 #: src/config.c:271
 #, c-format
 msgid ""
-"[fluxland] config directory not owned by current user: %s (owned by uid %d, "
+"[fluxwl] config directory not owned by current user: %s (owned by uid %d, "
 "current uid %d)\n"
 msgstr ""
 
 #: src/config.c:280
 #, c-format
 msgid ""
-"[fluxland] config directory has insecure permissions (group/world writable): "
+"[fluxwl] config directory has insecure permissions (group/world writable): "
 "%s\n"
 msgstr ""
 
 #: src/config.c:306
 msgid ""
-"[fluxland] FLUXLAND_CONFIG_DIR failed validation, falling back to default "
+"[fluxwl] FLUXWL_CONFIG_DIR failed validation, falling back to default "
 "config path\n"
 msgstr ""
 
@@ -86,7 +86,7 @@ msgstr ""
 
 #: src/main.c:24
 msgid ""
-"Usage: fluxland [options...]\n"
+"Usage: fluxwl [options...]\n"
 "  -s, --startup <cmd>  Run command on startup\n"
 "  -c, --check-config   Validate config and exit\n"
 "  -d, --debug          Enable debug logging\n"

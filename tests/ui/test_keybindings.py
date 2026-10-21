@@ -1,4 +1,4 @@
-"""Keybinding operation tests for fluxland compositor.
+"""Keybinding operation tests for fluxwl compositor.
 
 Tests verify that BindKey IPC commands are accepted by the compositor
 and return success. Actual key press simulation requires wtype which

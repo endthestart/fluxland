@@ -903,7 +903,7 @@ static void
 test_slit_load_slitlist_roundtrip(void)
 {
 	/* Create temp file */
-	char tmppath[] = "/tmp/fluxland-test-slitlist-XXXXXX";
+	char tmppath[] = "/tmp/fluxwl-test-slitlist-XXXXXX";
 	int fd = mkstemp(tmppath);
 	assert(fd >= 0);
 
@@ -937,7 +937,7 @@ test_slit_load_slitlist_roundtrip(void)
 static void
 test_slit_load_slitlist_empty_lines(void)
 {
-	char tmppath[] = "/tmp/fluxland-test-slitlist-XXXXXX";
+	char tmppath[] = "/tmp/fluxwl-test-slitlist-XXXXXX";
 	int fd = mkstemp(tmppath);
 	assert(fd >= 0);
 
@@ -985,7 +985,7 @@ test_slit_load_slitlist_nonexistent(void)
 	memset(&slit, 0, sizeof(slit));
 	wl_list_init(&slit.clients);
 
-	slit_load_slitlist(&slit, "/tmp/fluxland-test-nonexistent-slitlist");
+	slit_load_slitlist(&slit, "/tmp/fluxwl-test-nonexistent-slitlist");
 	assert(slit.slitlist == NULL);
 	assert(slit.slitlist_count == 0);
 
@@ -995,7 +995,7 @@ test_slit_load_slitlist_nonexistent(void)
 static void
 test_slit_save_slitlist(void)
 {
-	char tmppath[] = "/tmp/fluxland-test-slitlist-XXXXXX";
+	char tmppath[] = "/tmp/fluxwl-test-slitlist-XXXXXX";
 	int fd = mkstemp(tmppath);
 	assert(fd >= 0);
 	close(fd);

@@ -1,4 +1,4 @@
-"""Tab group operation tests for fluxland compositor.
+"""Tab group operation tests for fluxwl compositor.
 
 Tab groups are formed via mouse-initiated StartTabbing, which is not
 available in headless mode. These tests verify that tab-related IPC

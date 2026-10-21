@@ -53,7 +53,7 @@
 #define WLR_RENDER_ALLOCATOR_H
 #define WLR_RENDER_WLR_RENDERER_H
 
-/* fluxland */
+/* fluxwl */
 #define WM_ANIMATION_H
 #define WM_CONFIG_H
 #define WM_CURSOR_H
@@ -515,7 +515,7 @@ static void cairo_rectangle(cairo_t *cr, double x, double y,
 	double w, double h)
 	{ (void)cr; (void)x; (void)y; (void)w; (void)h; }
 
-/* --- Stub fluxland enums and types that cursor.c needs --- */
+/* --- Stub fluxwl enums and types that cursor.c needs --- */
 
 /* From config.h */
 enum wm_focus_policy {
@@ -1342,7 +1342,7 @@ wlr_relative_pointer_manager_v1_send_relative_motion(void *mgr,
 	(void)dx; (void)dy; (void)udx; (void)udy;
 }
 
-/* --- Stub fluxland functions used by cursor.c --- */
+/* --- Stub fluxwl functions used by cursor.c --- */
 
 void wm_spawn_command(const char *cmd) { (void)cmd; }
 

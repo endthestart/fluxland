@@ -1,5 +1,5 @@
 {
-  description = "Fluxland — a Fluxbox-inspired Wayland compositor";
+  description = "fluxwl — a Fluxbox-inspired Wayland compositor";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
@@ -15,7 +15,7 @@
           pkgs = nixpkgs.legacyPackages.${system};
         in {
           default = pkgs.stdenv.mkDerivation {
-            pname = "fluxland";
+            pname = "fluxwl";
             version = "1.1.0";
 
             src = self;
@@ -50,7 +50,7 @@
               homepage = "https://github.com/ecliptik/fluxland";
               license = licenses.mit;
               platforms = platforms.linux;
-              mainProgram = "fluxland";
+              mainProgram = "fluxwl";
             };
           };
         });

@@ -11,8 +11,8 @@ SETTLE = 0.2
 
 _PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 STYLE_DEFAULT = os.path.join(_PROJECT_ROOT, "data", "style")
-STYLE_HC_DARK = os.path.join(_PROJECT_ROOT, "data", "fluxland-hc-dark.style")
-STYLE_HC_LIGHT = os.path.join(_PROJECT_ROOT, "data", "fluxland-hc-light.style")
+STYLE_HC_DARK = os.path.join(_PROJECT_ROOT, "data", "fluxwl-hc-dark.style")
+STYLE_HC_LIGHT = os.path.join(_PROJECT_ROOT, "data", "fluxwl-hc-light.style")
 
 
 class TestStyles:

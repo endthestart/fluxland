@@ -50,7 +50,7 @@
 #define WLR_TYPES_WLR_XDG_DECORATION_V1
 #define WLR_TYPES_WLR_XDG_SHELL_H
 
-/* fluxland */
+/* fluxwl */
 #define WM_SERVER_H
 #define WM_CONFIG_H
 #define WM_DECORATION_H
@@ -247,7 +247,7 @@ struct wl_listener {
 	void (*notify)(struct wl_listener *, void *);
 };
 
-/* --- Stub fluxland types --- */
+/* --- Stub fluxwl types --- */
 
 /* keybind.h types */
 struct wm_keybind {
@@ -939,7 +939,7 @@ wlr_xcursor_manager_destroy(struct wlr_xcursor_manager *mgr)
 	(void)mgr;
 }
 
-/* --- fluxland module stubs --- */
+/* --- fluxwl module stubs --- */
 
 static void wm_render_cleanup(void) { }
 

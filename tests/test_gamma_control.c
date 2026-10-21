@@ -31,7 +31,7 @@
 #define WLR_TYPES_WLR_SCENE_H
 #define WLR_UTIL_LOG_H
 
-/* fluxland headers */
+/* fluxwl headers */
 #define WM_SERVER_H
 #define WM_GAMMA_CONTROL_H
 #define WM_OUTPUT_H

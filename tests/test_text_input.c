@@ -1,5 +1,5 @@
 /*
- * fluxland - A Fluxbox-inspired Wayland compositor
+ * fluxwl - A Fluxbox-inspired Wayland compositor
  * Copyright (c) 2025 fluxland contributors
  * SPDX-License-Identifier: MIT
  * test_text_input.c - Unit tests for text input v3 / input method v2 relay
@@ -37,7 +37,7 @@
 #define WLR_TYPES_WLR_KEYBOARD_H
 #define WLR_TYPES_WLR_SEAT_H
 
-/* fluxland */
+/* fluxwl */
 #define WM_SERVER_H
 #define WM_OUTPUT_H
 
@@ -440,7 +440,7 @@ wlr_output_layout_output_at(struct wlr_output_layout *layout,
 	return NULL;
 }
 
-/* --- Stub fluxland functions --- */
+/* --- Stub fluxwl functions --- */
 
 /* Forward declaration so stubs use the same type as the definition below */
 struct wm_server;

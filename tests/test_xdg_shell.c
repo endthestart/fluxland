@@ -283,7 +283,7 @@ test_set_app_id(pid_t pid, struct test_client *client)
 		return -1;
 	}
 
-	xdg_toplevel_set_app_id(tl.xdg_toplevel, "org.fluxland.test");
+	xdg_toplevel_set_app_id(tl.xdg_toplevel, "org.fluxwl.test");
 	if (harness_roundtrip(client) < 0) {
 		TEST_FAIL("roundtrip failed after set_app_id");
 		harness_destroy_toplevel(client, &tl);

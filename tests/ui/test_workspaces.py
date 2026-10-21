@@ -1,4 +1,4 @@
-"""Workspace management tests for fluxland compositor.
+"""Workspace management tests for fluxwl compositor.
 
 Tests workspace querying, creation, removal, renaming, and window-to-workspace
 operations via IPC. Workspace switching (Workspace N) is skipped because it

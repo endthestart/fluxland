@@ -6,8 +6,8 @@
  * save PNG reference images for comparing against known baselines.
  */
 
-#ifndef FLUXLAND_IMAGE_COMPARE_H
-#define FLUXLAND_IMAGE_COMPARE_H
+#ifndef FLUXWL_IMAGE_COMPARE_H
+#define FLUXWL_IMAGE_COMPARE_H
 
 #include <cairo.h>
 #include <stdbool.h>
@@ -88,4 +88,4 @@ struct image_compare_result image_compare_with_reference(
 	double tolerance_percent,
 	int channel_threshold);
 
-#endif /* FLUXLAND_IMAGE_COMPARE_H */
+#endif /* FLUXWL_IMAGE_COMPARE_H */

@@ -1,5 +1,5 @@
 /*
- * fluxland - A Fluxbox-inspired Wayland compositor
+ * fluxwl - A Fluxbox-inspired Wayland compositor
  * Copyright (c) 2025 fluxland contributors
  * SPDX-License-Identifier: MIT
  * text_input.c - Text input v3 and input method v2 relay for IME support

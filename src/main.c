@@ -1,5 +1,5 @@
 /*
- * fluxland - A Fluxbox-inspired Wayland compositor
+ * fluxwl - A Fluxbox-inspired Wayland compositor
  * Copyright (c) 2025 fluxland contributors
  * SPDX-License-Identifier: MIT
  * main.c - Entry point
@@ -21,7 +21,7 @@
 #include "validate.h"
 
 static const char usage[] = N_(
-	"Usage: fluxland [options...]\n"
+	"Usage: fluxwl [options...]\n"
 	"  -s, --startup <cmd>  Run command on startup\n"
 	"  -c, --check-config   Validate config and exit\n"
 	"  -d, --debug          Enable debug logging\n"
@@ -50,8 +50,8 @@ main(int argc, char *argv[])
 {
 	setlocale(LC_ALL, "");
 #ifdef HAVE_GETTEXT
-	bindtextdomain("fluxland", LOCALEDIR);
-	textdomain("fluxland");
+	bindtextdomain("fluxwl", LOCALEDIR);
+	textdomain("fluxwl");
 #endif
 
 	char *startup_cmd = NULL;
@@ -77,7 +77,7 @@ main(int argc, char *argv[])
 			ipc_no_exec = true;
 			break;
 		case 'v':
-			printf("fluxland %s\n", FLUXLAND_VERSION);
+			printf("fluxwl %s\n", FLUXWL_VERSION);
 			return 0;
 		case 'l':
 			wm_keybind_list_actions();

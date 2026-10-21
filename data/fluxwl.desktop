@@ -1,9 +1,9 @@
 [Desktop Entry]
-Name=Fluxland
+Name=fluxwl
 Comment=A Fluxbox-inspired Wayland compositor
 GenericName=Wayland Compositor
-Exec=fluxland
+Exec=fluxwl
 Type=Application
 Categories=System;
 Keywords=wayland;compositor;window manager;wlroots;fluxbox;stacking;
-DesktopNames=fluxland
+DesktopNames=fluxwl

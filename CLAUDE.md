@@ -1,4 +1,4 @@
-# Fluxland
+# fluxwl
 
 Fluxbox-inspired Wayland compositor built on wlroots 0.18. C17, Meson, MIT license. Version 1.1.0.
 
@@ -23,8 +23,8 @@ tests/ui/      21 Python pytest files — 174 end-to-end UI tests via IPC
 data/          Default configs (init, keys, apps, menu, style, startup) + styles
 examples/      Example config overlays (wave-desktop, minimal, sloppy-focus) + styles
 docs/          QUICKSTART.md, design/ARCHITECTURE.md, design/FLUXBOX-COMPAT.md
-man/           8 man pages (fluxland.1, fluxland-keys.5, etc.)
-packaging/     PKGBUILD (Arch), fluxland.spec (Fedora), Flatpak, debian/
+man/           8 man pages (fluxwl.1, fluxwl-keys.5, etc.)
+packaging/     PKGBUILD (Arch), fluxwl.spec (Fedora), Flatpak, debian/
 ```
 
 ## Architecture
@@ -80,8 +80,8 @@ Call `wm_toolbar_update_iconbar()` in BOTH `unmap` and `destroy` handlers.
 - Tests use `#include "source.c"` with header guards + local stubs
 - When adding new public API, add stubs to ALL test files that `#include` that module
 - Fuzz targets (7) use libFuzzer, require Clang: `fuzz_rcparser`, `fuzz_keybind`, `fuzz_style`, `fuzz_menu`, `fuzz_ipc_command`, `fuzz_rules`, `fuzz_mousebind`
-- UI tests connect via `FLUXLAND_SOCK` env var; support headless and live session modes
-- Tests needing `/tmp/fluxland-test/` fail under sandbox
+- UI tests connect via `FLUXWL_SOCK` env var; support headless and live session modes
+- Tests needing `/tmp/fluxwl-test/` fail under sandbox
 
 ## Security
 
@@ -100,8 +100,8 @@ Call `wm_toolbar_update_iconbar()` in BOTH `unmap` and `destroy` handlers.
 
 ## Config Files
 
-User config at `~/.config/fluxland/` with: `init` (settings), `keys` (bindings), `apps` (window rules), `menu` (root menu), `style`, `startup` (autostart). Live reload via `Mod4+r` or `SIGHUP`.
+User config at `~/.config/fluxwl/` with: `init` (settings), `keys` (bindings), `apps` (window rules), `menu` (root menu), `style`, `startup` (autostart). Live reload via `Mod4+r` or `SIGHUP`.
 
 ## IPC
 
-Socket at `$XDG_RUNTIME_DIR/fluxland.$WAYLAND_DISPLAY.sock`. CLI tool: `fluxland-ctl`. Commands: `ping`, `get_windows`, `get_workspaces`, `get_outputs`, `get_config`, `command`, `subscribe`.
+Socket at `$XDG_RUNTIME_DIR/fluxwl.$WAYLAND_DISPLAY.sock`. CLI tool: `fluxwl-ctl`. Commands: `ping`, `get_windows`, `get_workspaces`, `get_outputs`, `get_config`, `command`, `subscribe`.

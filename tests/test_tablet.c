@@ -1,5 +1,5 @@
 /*
- * fluxland - A Fluxbox-inspired Wayland compositor
+ * fluxwl - A Fluxbox-inspired Wayland compositor
  * Copyright (c) 2025 fluxland contributors
  * SPDX-License-Identifier: MIT
  * test_tablet.c - Unit tests for tablet/stylus input via tablet-v2 protocol
@@ -37,7 +37,7 @@
 #define WLR_TYPES_TABLET_TOOL_H
 #define WLR_TYPES_WLR_TABLET_V2_H
 
-/* fluxland */
+/* fluxwl */
 #define WM_SERVER_H
 #define WM_IDLE_H
 #define WM_VIEW_H
@@ -337,7 +337,7 @@ struct wlr_tablet_pad_strip_event {
 	enum wlr_tablet_pad_strip_source source;
 };
 
-/* --- Stub fluxland types --- */
+/* --- Stub fluxwl types --- */
 
 struct wm_view {
 	int id;

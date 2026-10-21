@@ -1,4 +1,4 @@
-# Fuzz targets for fluxland parsers
+# Fuzz targets for fluxwl parsers
 #
 # These require a compiler with -fsanitize=fuzzer support (typically clang).
 # They are built as standalone executables that can be run with:

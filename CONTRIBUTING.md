@@ -1,6 +1,6 @@
-# Contributing to fluxland
+# Contributing to fluxwl
 
-Thank you for your interest in contributing to fluxland! This document
+Thank you for your interest in contributing to fluxwl! This document
 covers the development workflow, project architecture, and how to add
 common types of features.
 
@@ -58,13 +58,13 @@ ninja -C build
 
 ```sh
 # In a TTY (DRM backend):
-./build/fluxland
+./build/fluxwl
 
 # Nested in another Wayland compositor (for development):
-WLR_BACKENDS=wayland ./build/fluxland
+WLR_BACKENDS=wayland ./build/fluxwl
 
 # Headless (for testing):
-WLR_BACKENDS=headless WLR_RENDERER=pixman ./build/fluxland
+WLR_BACKENDS=headless WLR_RENDERER=pixman ./build/fluxwl
 ```
 
 ### Running tests
@@ -83,7 +83,7 @@ Use the `--check-config` flag to validate all configuration files
 without starting the compositor:
 
 ```sh
-./build/fluxland --check-config
+./build/fluxwl --check-config
 ```
 
 This checks the init, keys, and style files for syntax errors,
@@ -321,7 +321,7 @@ read it in `wm_server_reconfigure()`.
 
 ## How to write a fuzz target
 
-Fluxland includes 7 fuzz targets in `tests/fuzz/` using libFuzzer.
+fluxwl includes 7 fuzz targets in `tests/fuzz/` using libFuzzer.
 Fuzz targets require Clang to build.
 
 ### Existing targets

@@ -12,7 +12,7 @@
 #include <sys/stat.h>
 #include <unistd.h>
 
-#define TEST_DIR "/tmp/fluxland-test/wm-test-validate"
+#define TEST_DIR "/tmp/fluxwl-test/wm-test-validate"
 #define TEST_INIT TEST_DIR "/init"
 #define TEST_KEYS TEST_DIR "/keys"
 #define TEST_STYLE TEST_DIR "/style"
@@ -20,7 +20,7 @@
 static void
 setup(void)
 {
-	mkdir("/tmp/fluxland-test", 0755);
+	mkdir("/tmp/fluxwl-test", 0755);
 	mkdir(TEST_DIR, 0755);
 }
 

@@ -14,13 +14,13 @@
 #include <wlr/types/wlr_keyboard.h>
 #include <xkbcommon/xkbcommon.h>
 
-#define TEST_DIR "/tmp/fluxland-test/wm-test-keybind"
+#define TEST_DIR "/tmp/fluxwl-test/wm-test-keybind"
 #define TEST_KEYS TEST_DIR "/keys"
 
 static void
 setup(void)
 {
-	mkdir("/tmp/fluxland-test", 0755);
+	mkdir("/tmp/fluxwl-test", 0755);
 	mkdir(TEST_DIR, 0755);
 }
 
@@ -409,7 +409,7 @@ test_load_nonexistent(void)
 	struct wl_list keymodes;
 	wl_list_init(&keymodes);
 
-	int ret = keybind_load(&keymodes, "/tmp/fluxland-test/nonexistent_keys_file");
+	int ret = keybind_load(&keymodes, "/tmp/fluxwl-test/nonexistent_keys_file");
 	assert(ret == -1);
 
 	keybind_destroy_all(&keymodes);

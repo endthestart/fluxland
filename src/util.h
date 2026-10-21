@@ -1,5 +1,5 @@
 /*
- * fluxland - A Fluxbox-inspired Wayland compositor
+ * fluxwl - A Fluxbox-inspired Wayland compositor
  * Copyright (c) 2025 fluxland contributors
  * SPDX-License-Identifier: MIT
  *
@@ -71,7 +71,7 @@ static inline FILE *fopen_nofollow(const char *path, const char *mode) {
 	int fd = open(path, flags, 0644);
 	if (fd < 0) {
 		if (errno == ELOOP)
-			fprintf(stderr, "[fluxland] Refusing to open"
+			fprintf(stderr, "[fluxwl] Refusing to open"
 				" symlink: %s\n", path);
 		return NULL;
 	}

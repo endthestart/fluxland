@@ -29,7 +29,7 @@
 #define WLR_TYPES_WLR_DRM_LEASE_V1_H
 #define WLR_UTIL_LOG_H
 
-/* fluxland headers */
+/* fluxwl headers */
 #define WM_SERVER_H
 #define WM_DRM_LEASE_H
 

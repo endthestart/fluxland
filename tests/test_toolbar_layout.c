@@ -572,7 +572,7 @@ wl_event_source_timer_update(struct wl_event_source *src, int ms)
 static void
 wl_event_source_remove(struct wl_event_source *src) { (void)src; }
 
-/* --- Stub fluxland functions --- */
+/* --- Stub fluxwl functions --- */
 
 static cairo_surface_t *
 wm_render_text(const char *text, const struct wm_font *font,

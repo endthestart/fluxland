@@ -1,10 +1,10 @@
-"""Compositor lifecycle management for fluxland UI tests.
+"""Compositor lifecycle management for fluxwl UI tests.
 
-Handles starting/stopping the fluxland compositor in both headless mode
+Handles starting/stopping the fluxwl compositor in both headless mode
 (for CI) and live session mode (connecting to an already-running compositor).
 
 IPC protocol: newline-delimited JSON over Unix domain socket.
-Socket path: $XDG_RUNTIME_DIR/fluxland.$WAYLAND_DISPLAY.sock
+Socket path: $XDG_RUNTIME_DIR/fluxwl.$WAYLAND_DISPLAY.sock
 """
 
 import glob
@@ -24,18 +24,18 @@ class CompositorError(Exception):
 
 
 class CompositorManager:
-    """Manage fluxland compositor lifecycle for testing.
+    """Manage fluxwl compositor lifecycle for testing.
 
     Supports two modes:
     - headless: Launches a new compositor with WLR_BACKENDS=headless
     - live session: Connects to the compositor already running on WAYLAND_DISPLAY
     """
 
-    def __init__(self, binary_path="fluxland", config_base_dir=None):
+    def __init__(self, binary_path="fluxwl", config_base_dir=None):
         """Initialize compositor manager.
 
         Args:
-            binary_path: Path to the fluxland binary, or just "fluxland"
+            binary_path: Path to the fluxwl binary, or just "fluxwl"
                 to search PATH. Also checks build directory.
             config_base_dir: Directory containing config sets (subdirs like
                 "default/"). Defaults to tests/ui/configs relative to this file.
@@ -58,18 +58,18 @@ class CompositorManager:
 
     @staticmethod
     def _resolve_binary(binary_path):
-        """Find the fluxland binary, checking common build locations."""
+        """Find the fluxwl binary, checking common build locations."""
         if os.path.isabs(binary_path) and os.access(binary_path, os.X_OK):
             return binary_path
 
         # Check build directory relative to project root
         project_root = Path(__file__).parent.parent.parent.parent
-        build_bin = project_root / "build" / "fluxland"
+        build_bin = project_root / "build" / "fluxwl"
         if build_bin.exists() and os.access(str(build_bin), os.X_OK):
             return str(build_bin)
 
         # Check test build location used by integration harness
-        test_bin = Path("/tmp/fluxland-test/wm-build/fluxland")
+        test_bin = Path("/tmp/fluxwl-test/wm-build/fluxwl")
         if test_bin.exists() and os.access(str(test_bin), os.X_OK):
             return str(test_bin)
 
@@ -81,7 +81,7 @@ class CompositorManager:
         return binary_path
 
     def start(self, config_set="default", headless=False):
-        """Start or connect to the fluxland compositor.
+        """Start or connect to the fluxwl compositor.
 
         Args:
             config_set: Name of the config set directory under config_base_dir.
@@ -103,10 +103,10 @@ class CompositorManager:
         """Launch a new headless compositor instance."""
         # Create temp directory structure matching integration harness
         self._tmp_dir = tempfile.mkdtemp(
-            prefix=f"fluxland-uitest-{os.getpid()}-"
+            prefix=f"fluxwl-uitest-{os.getpid()}-"
         )
         self._runtime_dir = os.path.join(self._tmp_dir, "runtime")
-        self._config_dir = os.path.join(self._tmp_dir, "config", "fluxland")
+        self._config_dir = os.path.join(self._tmp_dir, "config", "fluxwl")
 
         os.makedirs(self._runtime_dir, mode=0o700)
         os.makedirs(self._config_dir, mode=0o755)
@@ -147,7 +147,7 @@ class CompositorManager:
         # Build IPC socket path
         self._socket_path = os.path.join(
             self._runtime_dir,
-            f"fluxland.{self._wayland_display}.sock",
+            f"fluxwl.{self._wayland_display}.sock",
         )
 
         # Wait for IPC to be ready
@@ -172,13 +172,13 @@ class CompositorManager:
                 "XDG_RUNTIME_DIR not set; cannot locate IPC socket"
             )
 
-        # Check for FLUXLAND_SOCK env var first (set by compositor)
-        fluxland_sock = os.environ.get("FLUXLAND_SOCK")
+        # Check for FLUXWL_SOCK env var first (set by compositor)
+        fluxland_sock = os.environ.get("FLUXWL_SOCK")
         if fluxland_sock and os.path.exists(fluxland_sock):
             self._socket_path = fluxland_sock
         else:
             self._socket_path = os.path.join(
-                runtime_dir, f"fluxland.{wayland_display}.sock"
+                runtime_dir, f"fluxwl.{wayland_display}.sock"
             )
 
         if not os.path.exists(self._socket_path):

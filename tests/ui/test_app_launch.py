@@ -1,4 +1,4 @@
-"""TC-LAUNCH: Application launch tests for fluxland compositor.
+"""TC-LAUNCH: Application launch tests for fluxwl compositor.
 
 Tests that each application listed in the default menu can be launched
 via IPC Exec command and creates a visible window. Validates Bug #1:
@@ -283,7 +283,7 @@ class TestSystemLaunch:
         initial_ping = ipc.ping()
         assert initial_ping is True
 
-        ipc.command("Exec grim /tmp/fluxland-test-screenshot.png")
+        ipc.command("Exec grim /tmp/fluxwl-test-screenshot.png")
         time.sleep(1.0)
 
         # Compositor should still be alive

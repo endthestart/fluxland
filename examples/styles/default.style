@@ -1,6 +1,6 @@
-# fluxland default style
+# fluxwl default style
 # A clean, modern Fluxbox-inspired style with dark colors.
-# Place custom styles in: ~/.config/fluxland/styles/
+# Place custom styles in: ~/.config/fluxwl/styles/
 #
 # Texture syntax:
 #   Flat, Raised, or Sunken

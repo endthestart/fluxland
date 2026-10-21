@@ -13,13 +13,13 @@
 #include <sys/stat.h>
 #include <unistd.h>
 
-#define TEST_DIR "/tmp/fluxland-test/wm-test-config"
+#define TEST_DIR "/tmp/fluxwl-test/wm-test-config"
 #define TEST_INIT TEST_DIR "/init"
 
 static void
 setup(void)
 {
-	mkdir("/tmp/fluxland-test", 0755);
+	mkdir("/tmp/fluxwl-test", 0755);
 	mkdir(TEST_DIR, 0755);
 }
 
@@ -434,7 +434,7 @@ test_phase5b_config_options(void)
 		"session.screen0.edgeResizeSnapThreshold: 15\n"
 		"session.screen0.defaultDeco: BORDER\n"
 		"session.screen0.struts: 0 0 32 0\n"
-		"session.styleOverlay: /tmp/claude-test-fluxland/overlay\n"
+		"session.styleOverlay: /tmp/claude-test-fluxwl/overlay\n"
 	);
 
 	struct wm_config *c = config_create();
@@ -510,7 +510,7 @@ test_phase5c_config_options(void)
 	write_file(TEST_INIT,
 		"session.menuSearch: itemstart\n"
 		"session.screen0.menuDelay: 300\n"
-		"session.screen0.windowMenu: /tmp/claude-test-fluxland/windowmenu\n"
+		"session.screen0.windowMenu: /tmp/claude-test-fluxwl/windowmenu\n"
 	);
 	struct wm_config *c = config_create();
 	config_load(c, TEST_INIT);
@@ -518,7 +518,7 @@ test_phase5c_config_options(void)
 	assert(c->menu_delay == 300);
 	assert(c->window_menu_file &&
 		strcmp(c->window_menu_file,
-			"/tmp/claude-test-fluxland/windowmenu") == 0);
+			"/tmp/claude-test-fluxwl/windowmenu") == 0);
 	config_destroy(c);
 
 	/* Test menuSearch = somewhere */
@@ -1075,20 +1075,20 @@ static void
 test_file_path_absolute(void)
 {
 	write_file(TEST_INIT,
-		"session.keyFile: /tmp/fluxland-test/custom-keys\n"
-		"session.appsFile: /tmp/fluxland-test/custom-apps\n"
-		"session.menuFile: /tmp/fluxland-test/custom-menu\n"
-		"session.styleFile: /tmp/fluxland-test/custom-style\n"
+		"session.keyFile: /tmp/fluxwl-test/custom-keys\n"
+		"session.appsFile: /tmp/fluxwl-test/custom-apps\n"
+		"session.menuFile: /tmp/fluxwl-test/custom-menu\n"
+		"session.styleFile: /tmp/fluxwl-test/custom-style\n"
 	);
 
 	struct wm_config *c = config_create();
 	config_load(c, TEST_INIT);
 
 	assert(c->keys_file != NULL);
-	assert(strcmp(c->keys_file, "/tmp/fluxland-test/custom-keys") == 0);
-	assert(strcmp(c->apps_file, "/tmp/fluxland-test/custom-apps") == 0);
-	assert(strcmp(c->menu_file, "/tmp/fluxland-test/custom-menu") == 0);
-	assert(strcmp(c->style_file, "/tmp/fluxland-test/custom-style") == 0);
+	assert(strcmp(c->keys_file, "/tmp/fluxwl-test/custom-keys") == 0);
+	assert(strcmp(c->apps_file, "/tmp/fluxwl-test/custom-apps") == 0);
+	assert(strcmp(c->menu_file, "/tmp/fluxwl-test/custom-menu") == 0);
+	assert(strcmp(c->style_file, "/tmp/fluxwl-test/custom-style") == 0);
 
 	config_destroy(c);
 	printf("  PASS: test_file_path_absolute\n");
@@ -1141,14 +1141,14 @@ static void
 test_slitlist_file_path(void)
 {
 	write_file(TEST_INIT,
-		"session.slitlistFile: /tmp/fluxland-test/myslitlist\n"
+		"session.slitlistFile: /tmp/fluxwl-test/myslitlist\n"
 	);
 
 	struct wm_config *c = config_create();
 	config_load(c, TEST_INIT);
 
 	assert(c->slitlist_file != NULL);
-	assert(strcmp(c->slitlist_file, "/tmp/fluxland-test/myslitlist") == 0);
+	assert(strcmp(c->slitlist_file, "/tmp/fluxwl-test/myslitlist") == 0);
 
 	config_destroy(c);
 	printf("  PASS: test_slitlist_file_path\n");

@@ -1,19 +1,19 @@
-.TH FLUXLAND-CTL 1 "2026-03-03" "fluxland 1.1.0" "General Commands Manual"
+.TH FLUXWL-CTL 1 "2026-03-03" "fluxwl 1.1.0" "General Commands Manual"
 .SH NAME
-fluxland-ctl \- command-line IPC client for fluxland
+fluxwl-ctl \- command-line IPC client for fluxwl
 .SH SYNOPSIS
-.B fluxland-ctl
+.B fluxwl-ctl
 .RB [ \-s
 .IR socket ]
 .RB [ \-r ]
 .IR command " [" args... ]
 .br
-.B fluxland-ctl
+.B fluxwl-ctl
 .B \-h
 .SH DESCRIPTION
-.B fluxland-ctl
+.B fluxwl-ctl
 is a command-line tool for communicating with a running
-.BR fluxland (1)
+.BR fluxwl (1)
 compositor via its IPC socket.
 It can execute compositor actions, query window and workspace state,
 subscribe to events, and more.
@@ -25,11 +25,11 @@ JSON-encoded command, and prints the JSON response.
 .BI \-s " socket"
 Path to the IPC socket.
 By default,
-.B fluxland-ctl
+.B fluxwl-ctl
 auto-detects the socket by checking
-.B $FLUXLAND_SOCK
+.B $FLUXWL_SOCK
 and then trying
-.IR $XDG_RUNTIME_DIR/fluxland.$WAYLAND_DISPLAY.sock .
+.IR $XDG_RUNTIME_DIR/fluxwl.$WAYLAND_DISPLAY.sock .
 .TP
 .B \-r
 Raw output mode (no pretty printing).
@@ -343,7 +343,7 @@ The socket is authenticated using
 .BR SO_PEERCRED ;
 only connections from the same UID as the compositor are accepted.
 .SH SOCKET DISCOVERY
-.B fluxland-ctl
+.B fluxwl-ctl
 locates the IPC socket in this order:
 .PP
 .RS 4
@@ -352,19 +352,19 @@ locates the IPC socket in this order:
 command-line option.
 .br
 2. The
-.B FLUXLAND_SOCK
+.B FLUXWL_SOCK
 environment variable (set automatically by the compositor for child
 processes).
 .br
 3. Constructed from
-.IR $XDG_RUNTIME_DIR/fluxland.$WAYLAND_DISPLAY.sock .
+.IR $XDG_RUNTIME_DIR/fluxwl.$WAYLAND_DISPLAY.sock .
 .RE
 .SH EXAMPLES
 Close the focused window:
 .PP
 .RS 4
 .nf
-fluxland-ctl action Close
+fluxwl-ctl action Close
 .fi
 .RE
 .PP
@@ -372,7 +372,7 @@ Switch to workspace 3:
 .PP
 .RS 4
 .nf
-fluxland-ctl action Workspace 3
+fluxwl-ctl action Workspace 3
 .fi
 .RE
 .PP
@@ -380,7 +380,7 @@ Launch a terminal:
 .PP
 .RS 4
 .nf
-fluxland-ctl action Exec foot
+fluxwl-ctl action Exec foot
 .fi
 .RE
 .PP
@@ -388,7 +388,7 @@ List all windows (JSON):
 .PP
 .RS 4
 .nf
-fluxland-ctl get_windows
+fluxwl-ctl get_windows
 .fi
 .RE
 .PP
@@ -396,7 +396,7 @@ Get the focused window title using jq:
 .PP
 .RS 4
 .nf
-fluxland-ctl get_windows | jq '.[] | select(.focused) | .title'
+fluxwl-ctl get_windows | jq '.[] | select(.focused) | .title'
 .fi
 .RE
 .PP
@@ -404,7 +404,7 @@ Subscribe to window events:
 .PP
 .RS 4
 .nf
-fluxland-ctl subscribe window
+fluxwl-ctl subscribe window
 .fi
 .RE
 .PP
@@ -412,7 +412,7 @@ Subscribe to multiple event types:
 .PP
 .RS 4
 .nf
-fluxland-ctl subscribe window,workspace,output
+fluxwl-ctl subscribe window,workspace,output
 .fi
 .RE
 .PP
@@ -420,7 +420,7 @@ List available actions (no compositor needed):
 .PP
 .RS 4
 .nf
-fluxland-ctl list-actions
+fluxwl-ctl list-actions
 .fi
 .RE
 .PP
@@ -428,7 +428,7 @@ Connect to a specific socket:
 .PP
 .RS 4
 .nf
-fluxland-ctl -s /run/user/1000/fluxland.wayland-1.sock get_windows
+fluxwl-ctl -s /run/user/1000/fluxwl.wayland-1.sock get_windows
 .fi
 .RE
 .SH EXIT STATUS
@@ -439,6 +439,6 @@ Command executed successfully.
 .B 1
 An error occurred (connection failure, unknown command, etc.).
 .SH SEE ALSO
-.BR fluxland (1),
-.BR fluxland-keys (5),
-.BR fluxland-init (5)
+.BR fluxwl (1),
+.BR fluxwl-keys (5),
+.BR fluxwl-init (5)

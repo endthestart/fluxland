@@ -1,4 +1,4 @@
-"""Focus behavior tests for fluxland compositor."""
+"""Focus behavior tests for fluxwl compositor."""
 
 import time
 

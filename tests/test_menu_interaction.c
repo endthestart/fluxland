@@ -2783,7 +2783,7 @@ test_parse_simple_tags(void)
 	fprintf(fp, "[begin] (Root)\n");
 	fprintf(fp, "[exit] (Quit)\n");
 	fprintf(fp, "[reconfig] (Reload)\n");
-	fprintf(fp, "[restart] (Restart) {fluxland}\n");
+	fprintf(fp, "[restart] (Restart) {fluxwl}\n");
 	fprintf(fp, "[workspaces] (WS)\n");
 	fprintf(fp, "[end]\n");
 	fclose(fp);
@@ -2805,7 +2805,7 @@ test_parse_simple_tags(void)
 	assert(item->type == WM_MENU_RESTART);
 	assert(strcmp(item->label, "Restart") == 0);
 	assert(item->command != NULL);
-	assert(strcmp(item->command, "fluxland") == 0);
+	assert(strcmp(item->command, "fluxwl") == 0);
 
 	item = menu_get_item(menu, 3);
 	assert(item->type == WM_MENU_WORKSPACES);
@@ -3082,7 +3082,7 @@ test_execute_restart(void)
 	setup_server();
 	struct wm_menu *menu = menu_create(&test_server, "Test");
 	struct wm_menu_item *item = menu_item_create(WM_MENU_RESTART, "Restart");
-	item->command = strdup("fluxland");
+	item->command = strdup("fluxwl");
 	wl_list_insert(menu->items.prev, &item->link);
 
 	execute_menu_item(menu, item);

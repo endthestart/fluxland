@@ -5,11 +5,11 @@
 # significant additional configuration (--device=all, --socket=wayland,
 # host filesystem access, etc.) to function.
 
-app-id: com.fluxland.Fluxland
+app-id: com.fluxwl.fluxwl
 runtime: org.freedesktop.Platform
 runtime-version: '24.08'
 sdk: org.freedesktop.Sdk
-command: fluxland
+command: fluxwl
 
 finish-args:
   # A compositor needs direct device access
@@ -21,7 +21,7 @@ finish-args:
   # Needed to manage displays
   - --filesystem=/sys/class/drm:ro
   # Access user config
-  - --filesystem=~/.config/fluxland:create
+  - --filesystem=~/.config/fluxwl:create
   # Access to run directory for Wayland socket creation
   - --filesystem=/run/user/$UID:create
 
@@ -44,7 +44,7 @@ modules:
         url: https://gitlab.freedesktop.org/wlroots/wlroots/-/releases/0.18.2/downloads/wlroots-0.18.2.tar.gz
         sha256: cf776c169169f279808d9eabc6583f484338dcd454c966a285ff178c88c105d4
 
-  - name: fluxland
+  - name: fluxwl
     buildsystem: meson
     config-opts:
       - -Dxwayland=auto

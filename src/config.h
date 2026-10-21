@@ -1,5 +1,5 @@
 /*
- * fluxland - A Fluxbox-inspired Wayland compositor
+ * fluxwl - A Fluxbox-inspired Wayland compositor
  * Copyright (c) 2025 fluxland contributors
  * SPDX-License-Identifier: MIT
  *
@@ -7,9 +7,9 @@
  *
  * Loads Fluxbox-compatible init files using X resource database format.
  * Search order:
- *   1. $FLUXLAND_CONFIG_DIR/
- *   2. $XDG_CONFIG_HOME/fluxland/
- *   3. ~/.config/fluxland/
+ *   1. $FLUXWL_CONFIG_DIR/
+ *   2. $XDG_CONFIG_HOME/fluxwl/
+ *   3. ~/.config/fluxwl/
  *   4. ~/.fluxbox/ (Fluxbox compat fallback)
  */
 

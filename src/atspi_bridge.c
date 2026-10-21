@@ -1,5 +1,5 @@
 /*
- * fluxland - A Fluxbox-inspired Wayland compositor
+ * fluxwl - A Fluxbox-inspired Wayland compositor
  * Copyright (c) 2025 fluxland contributors
  * SPDX-License-Identifier: MIT
  *
@@ -74,12 +74,12 @@ wm_atspi_announce_focus(struct wm_atspi_bridge *bridge,
 	 * The signal path and interface follow the AT-SPI2 spec. */
 	int r = sd_bus_emit_signal(
 		bridge->bus,
-		"/org/a11y/atspi/accessible/fluxland",
+		"/org/a11y/atspi/accessible/fluxwl",
 		"org.a11y.atspi.Event.Focus",
 		"Focus",
 		"siiv(so)",
 		"focus:", 0, 0, "s", name ? name : "",
-		"/org/a11y/atspi/accessible/fluxland",
+		"/org/a11y/atspi/accessible/fluxwl",
 		"org.a11y.atspi.Accessible");
 	if (r < 0) {
 		wlr_log(WLR_DEBUG, "AT-SPI: failed to emit focus signal: %s",

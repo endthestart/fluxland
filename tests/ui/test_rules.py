@@ -1,4 +1,4 @@
-"""TC-RULES: Window rules tests for fluxland compositor.
+"""TC-RULES: Window rules tests for fluxwl compositor.
 
 Tests the Remember command which saves the focused window's current
 properties to the apps file for future window matching.

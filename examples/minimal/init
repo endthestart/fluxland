@@ -1,8 +1,8 @@
-# fluxland minimal configuration
+# fluxwl minimal configuration
 # A bare-minimum setup for new users. Start here and customize.
 #
 # Usage:
-#   cp -r examples/minimal/* ~/.config/fluxland/
+#   cp -r examples/minimal/* ~/.config/fluxwl/
 
 # -------------------------------------------------------------------
 # Workspaces

@@ -1,4 +1,4 @@
-"""IPC protocol tests for fluxland compositor.
+"""IPC protocol tests for fluxwl compositor.
 
 Tests cover the full IPC client API: queries, commands, error handling,
 event subscriptions, and sequential/rapid operation patterns.
@@ -113,7 +113,7 @@ class TestIPCErrors:
     def test_connection_error_bad_path(self):
         """Connecting to a nonexistent socket raises IPCConnectionError."""
         with pytest.raises(IPCConnectionError):
-            FluxlandIPC(socket_path="/tmp/nonexistent-fluxland-test.sock")
+            FluxlandIPC(socket_path="/tmp/nonexistent-fluxwl-test.sock")
 
 
 class TestIPCEvents:

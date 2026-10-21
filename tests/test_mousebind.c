@@ -14,13 +14,13 @@
 #include <unistd.h>
 #include <wlr/types/wlr_keyboard.h>
 
-#define TEST_DIR "/tmp/fluxland-test/wm-test-mousebind"
+#define TEST_DIR "/tmp/fluxwl-test/wm-test-mousebind"
 #define TEST_KEYS TEST_DIR "/keys"
 
 static void
 setup(void)
 {
-	mkdir("/tmp/fluxland-test", 0755);
+	mkdir("/tmp/fluxwl-test", 0755);
 	mkdir(TEST_DIR, 0755);
 }
 
@@ -486,7 +486,7 @@ test_load_nonexistent(void)
 	wl_list_init(&bindings);
 
 	int ret = mousebind_load(&bindings,
-		"/tmp/fluxland-test/nonexistent_mouse_file", NULL);
+		"/tmp/fluxwl-test/nonexistent_mouse_file", NULL);
 	assert(ret == -1);
 
 	mousebind_destroy_list(&bindings);

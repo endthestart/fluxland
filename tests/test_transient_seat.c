@@ -30,7 +30,7 @@
 #define WLR_TYPES_WLR_TRANSIENT_SEAT_V1_H
 #define WLR_UTIL_LOG_H
 
-/* fluxland headers */
+/* fluxwl headers */
 #define WM_SERVER_H
 #define WM_TRANSIENT_SEAT_H
 

@@ -17,7 +17,7 @@ Windows
 Toolbar
 
 Styles
-- [RESOLVED] Switching a style only applies to newly opened windows, not existing windows or the menu and toolbar. Switching style should apply to all new and existing UI elements controlled by a style. Reloading configuration or restarting fluxland from the menu does not update the style.
+- [RESOLVED] Switching a style only applies to newly opened windows, not existing windows or the menu and toolbar. Switching style should apply to all new and existing UI elements controlled by a style. Reloading configuration or restarting fluxwl from the menu does not update the style.
   - Fixed: WM_MENU_STYLE handler now updates config->style_file (preserves choice across reconfigure), calls wm_toolbar_relayout(), updates all view decorations, and broadcasts IPC style_changed event. Matches existing handle_set_style() pattern.
 
 Rendering
@@ -25,5 +25,5 @@ Rendering
   - Fixed: Environmental (SPICE/VNC compression through virt-manager). The view_at() type confusion (Bug #8) was contributing to scene graph corruption and has been fixed via validate_view_data(). Pixel gap artifacts in tiled layouts fixed separately via wlr_xdg_toplevel_set_tiled() hints. Decoration scene node updates now have position-change guards to avoid redundant damage. No code-level rendering bugs remain.
 
 Crashes
-- [RESOLVED] Launching some applications like "Area Screenshot" cause Fluxland to crash
+- [RESOLVED] Launching some applications like "Area Screenshot" cause fluxwl to crash
   - Fixed: Type confusion in view_at() — when layer surfaces (e.g. slurp overlay) were present, node.data was returned as wm_view* but was actually wlr_scene_layer_surface_v1*, causing segfault on dereference. Fix: added validate_view_data() that checks candidate pointer against server->views list.

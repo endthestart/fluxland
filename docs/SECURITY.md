@@ -2,7 +2,7 @@
 
 ## Reporting a Vulnerability
 
-If you discover a security vulnerability in fluxland, please report it
+If you discover a security vulnerability in fluxwl, please report it
 responsibly. **Do not open a public GitHub issue for security
 vulnerabilities.**
 
@@ -26,7 +26,7 @@ mitigation within 7 days for critical issues.
 
 ## Security Measures
 
-Fluxland implements several security hardening measures:
+fluxwl implements several security hardening measures:
 
 ### Input Validation
 - **`safe_atoi()`** — All integer parsing uses bounds-checked

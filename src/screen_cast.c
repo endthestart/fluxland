@@ -1,5 +1,5 @@
 /*
- * fluxland - A Fluxbox-inspired Wayland compositor
+ * fluxwl - A Fluxbox-inspired Wayland compositor
  * Copyright (c) 2025 fluxland contributors
  * SPDX-License-Identifier: MIT
  * screen_cast.c - PipeWire screen recording support
@@ -317,10 +317,10 @@ wm_screen_cast_start(struct wm_screen_cast *sc, const char *output_name)
 		PW_KEY_MEDIA_TYPE, "Video",
 		PW_KEY_MEDIA_CATEGORY, "Capture",
 		PW_KEY_MEDIA_ROLE, "Screen",
-		PW_KEY_NODE_NAME, "fluxland-screen-cast",
+		PW_KEY_NODE_NAME, "fluxwl-screen-cast",
 		NULL);
 
-	sc->stream = pw_stream_new(sc->core, "fluxland-screen-cast", props);
+	sc->stream = pw_stream_new(sc->core, "fluxwl-screen-cast", props);
 	if (!sc->stream) {
 		wlr_log(WLR_ERROR, "screen_cast: failed to create stream");
 		sc->state = WM_SCREEN_CAST_ERROR;

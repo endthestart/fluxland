@@ -1,10 +1,10 @@
-[begin] (fluxland)
+[begin] (fluxwl)
   [exec] (Terminal) {foot}
   [exec] (Editor) {foot -e vi}
   [separator]
   [workspaces] (Workspaces)
   [separator]
-  [submenu] (fluxland)
+  [submenu] (fluxwl)
     [reconfig] (Reload Config)
     [restart] (Restart)
     [separator]

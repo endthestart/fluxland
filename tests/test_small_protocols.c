@@ -42,7 +42,7 @@
 #define WLR_RENDER_WLR_RENDERER_H
 #define WLR_UTIL_LOG_H
 
-/* fluxland headers */
+/* fluxwl headers */
 #define WM_SERVER_H
 #define WM_FRACTIONAL_SCALE_H
 #define WM_PRESENTATION_H

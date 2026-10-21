@@ -1,4 +1,4 @@
-"""TC-WIN: Window management tests for fluxland compositor.
+"""TC-WIN: Window management tests for fluxwl compositor.
 
 Tests core window operations: close, maximize, fullscreen, minimize,
 shade, stick, show desktop, half-tiling, and raise/lower.

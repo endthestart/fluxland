@@ -253,7 +253,7 @@ wlr_scene_node_set_position(struct wlr_scene_node *node, int x, int y)
 	g_set_position_count++;
 }
 
-/* --- Stub fluxland functions --- */
+/* --- Stub fluxwl functions --- */
 
 static void
 wm_view_get_geometry(struct wm_view *view, struct wlr_box *box)

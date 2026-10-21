@@ -1,4 +1,4 @@
-Name:           fluxland
+Name:           fluxwl
 Version:        1.1.0
 Release:        1%{?dist}
 Summary:        A Fluxbox-inspired Wayland compositor
@@ -26,7 +26,7 @@ Recommends:     xorg-x11-server-Xwayland
 Recommends:     foot
 
 %description
-Fluxland is a lightweight Wayland compositor inspired by Fluxbox.
+fluxwl is a lightweight Wayland compositor inspired by Fluxbox.
 It provides a familiar stacking window manager experience on Wayland
 using the wlroots library, with features including configurable
 keybindings, window decorations, workspaces, a toolbar, and menus.
@@ -47,23 +47,23 @@ keybindings, window decorations, workspaces, a toolbar, and menus.
 %files
 %license LICENSE
 %doc README.md
-%{_bindir}/fluxland
-%{_bindir}/fluxland-ctl
-%{_datadir}/applications/fluxland.desktop
-%{_datadir}/wayland-sessions/fluxland-session.desktop
-%{_datadir}/fluxland/examples/
-%{_mandir}/man1/fluxland.1*
-%{_mandir}/man5/fluxland-apps.5*
-%{_mandir}/man5/fluxland-keys.5*
-%{_mandir}/man5/fluxland-menu.5*
-%{_mandir}/man1/fluxland-ctl.1*
-%{_mandir}/man5/fluxland-init.5*
-%{_mandir}/man5/fluxland-startup.5*
-%{_mandir}/man5/fluxland-style.5*
-%{_datadir}/fluxland/styles/
+%{_bindir}/fluxwl
+%{_bindir}/fluxwl-ctl
+%{_datadir}/applications/fluxwl.desktop
+%{_datadir}/wayland-sessions/fluxwl-session.desktop
+%{_datadir}/fluxwl/examples/
+%{_mandir}/man1/fluxwl.1*
+%{_mandir}/man5/fluxwl-apps.5*
+%{_mandir}/man5/fluxwl-keys.5*
+%{_mandir}/man5/fluxwl-menu.5*
+%{_mandir}/man1/fluxwl-ctl.1*
+%{_mandir}/man5/fluxwl-init.5*
+%{_mandir}/man5/fluxwl-startup.5*
+%{_mandir}/man5/fluxwl-style.5*
+%{_datadir}/fluxwl/styles/
 
 %changelog
-* Mon Mar 03 2026 Fluxland Contributors <noreply@fluxland.dev> - 1.1.0-1
+* Mon Mar 03 2026 fluxwl Contributors <noreply@fluxwl.dev> - 1.1.0-1
 - Fluxbox style compatibility with 37 bundled styles
 - GdkPixbuf pixmap support for XPM/JPEG/BMP
 - PipeWire screen cast, touchpad gestures, AT-SPI bridge

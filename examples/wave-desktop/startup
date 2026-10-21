@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-# fluxland "Great Wave" desktop startup script
+# fluxwl "Great Wave" desktop startup script
 # Sets the Great Wave wallpaper and starts background services.
 #
 # Prerequisites:

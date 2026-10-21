@@ -1,4 +1,4 @@
-"""TC-TB: Toolbar tests for fluxland compositor.
+"""TC-TB: Toolbar tests for fluxwl compositor.
 
 Tests toolbar visibility toggle, above/below stacking, and keyboard
 focus navigation commands.

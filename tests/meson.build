@@ -1,4 +1,4 @@
-# Test infrastructure for fluxland
+# Test infrastructure for fluxwl
 # Each test is a standalone executable that returns 0 on success.
 
 test_inc = include_directories('../src')
@@ -307,9 +307,9 @@ if have_systray
 endif
 
 # --- test_main: main.c entry point integration tests ---
-# Invokes the fluxland binary with various CLI flags and checks output/exit codes.
+# Invokes the fluxwl binary with various CLI flags and checks output/exit codes.
 test_main_env = environment()
-test_main_env.set('FLUXLAND_BIN', fluxland_exe.full_path())
+test_main_env.set('FLUXWL_BIN', fluxland_exe.full_path())
 test_main = executable(
   'test_main',
   files('test_main.c'),

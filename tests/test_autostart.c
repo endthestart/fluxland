@@ -17,13 +17,13 @@
 #include <sys/wait.h>
 #include <unistd.h>
 
-#define TEST_DIR "/tmp/fluxland-test/wm-test-autostart"
+#define TEST_DIR "/tmp/fluxwl-test/wm-test-autostart"
 #define TEST_STARTUP TEST_DIR "/startup"
 
 static void
 setup(void)
 {
-	mkdir("/tmp/fluxland-test", 0755);
+	mkdir("/tmp/fluxwl-test", 0755);
 	mkdir(TEST_DIR, 0755);
 }
 
@@ -58,7 +58,7 @@ static void
 test_nonexistent_config_dir(void)
 {
 	int ret = wm_autostart_run(
-		"/tmp/fluxland-test/nonexistent_dir_12345", "wayland-0");
+		"/tmp/fluxwl-test/nonexistent_dir_12345", "wayland-0");
 	assert(ret == -1);
 	printf("  PASS: test_nonexistent_config_dir\n");
 }

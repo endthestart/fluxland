@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-# fluxland minimal startup script
+# fluxwl minimal startup script
 # Starts a solid color background. Customize with your preferred tools.
 
 # Simple dark background

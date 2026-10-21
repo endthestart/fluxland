@@ -1,12 +1,12 @@
-"""Fluxland IPC client library.
+"""fluxwl IPC client library.
 
-Provides a Python interface to the fluxland compositor's Unix domain socket
+Provides a Python interface to the fluxwl compositor's Unix domain socket
 IPC protocol. Supports querying compositor state, executing commands, and
 subscribing to real-time events.
 
 Protocol details:
     - Transport: Unix domain socket (SOCK_STREAM)
-    - Socket path: $FLUXLAND_SOCK or $XDG_RUNTIME_DIR/fluxland.$WAYLAND_DISPLAY.sock
+    - Socket path: $FLUXWL_SOCK or $XDG_RUNTIME_DIR/fluxwl.$WAYLAND_DISPLAY.sock
     - Framing: Newline-delimited JSON
     - Security: SO_PEERCRED UID check (same user only)
 
@@ -46,11 +46,11 @@ class CommandError(IPCError):
 
 
 def _discover_socket_path():
-    """Discover the fluxland IPC socket path.
+    """Discover the fluxwl IPC socket path.
 
     Checks, in order:
-        1. $FLUXLAND_SOCK environment variable
-        2. $XDG_RUNTIME_DIR/fluxland.$WAYLAND_DISPLAY.sock
+        1. $FLUXWL_SOCK environment variable
+        2. $XDG_RUNTIME_DIR/fluxwl.$WAYLAND_DISPLAY.sock
 
     Returns:
         The socket path string.
@@ -58,7 +58,7 @@ def _discover_socket_path():
     Raises:
         ConnectionError: If the socket path cannot be determined.
     """
-    sock_path = os.environ.get("FLUXLAND_SOCK")
+    sock_path = os.environ.get("FLUXWL_SOCK")
     if sock_path:
         return sock_path
 
@@ -66,11 +66,11 @@ def _discover_socket_path():
     if not runtime_dir:
         raise ConnectionError(
             "Cannot determine socket path: "
-            "neither FLUXLAND_SOCK nor XDG_RUNTIME_DIR is set"
+            "neither FLUXWL_SOCK nor XDG_RUNTIME_DIR is set"
         )
 
     wayland_display = os.environ.get("WAYLAND_DISPLAY", "wayland-0")
-    return os.path.join(runtime_dir, f"fluxland.{wayland_display}.sock")
+    return os.path.join(runtime_dir, f"fluxwl.{wayland_display}.sock")
 
 
 def _connect(socket_path, timeout):
@@ -270,7 +270,7 @@ class EventStream:
 
 
 class FluxlandIPC:
-    """Client for the fluxland compositor IPC protocol.
+    """Client for the fluxwl compositor IPC protocol.
 
     Connects to the compositor's Unix domain socket and provides methods
     for querying state, executing commands, and subscribing to events.

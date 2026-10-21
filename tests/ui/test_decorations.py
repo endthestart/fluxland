@@ -1,4 +1,4 @@
-"""Window decoration tests for fluxland compositor.
+"""Window decoration tests for fluxwl compositor.
 
 Tests decoration toggle, removal, fullscreen/maximize interaction with
 decorations, and independent decoration state across windows.

@@ -1,5 +1,5 @@
 /*
- * fluxland - A Fluxbox-inspired Wayland compositor
+ * fluxwl - A Fluxbox-inspired Wayland compositor
  * Copyright (c) 2025 fluxland contributors
  * SPDX-License-Identifier: MIT
  * test_input.c - Unit tests for input device management
@@ -35,7 +35,7 @@
 #define WLR_TYPES_WLR_SEAT_H
 #define WLR_TYPES_WLR_XCURSOR_MANAGER_H
 
-/* fluxland */
+/* fluxwl */
 #define WM_SERVER_H
 #define WM_KEYBOARD_H
 #define WM_CURSOR_H
@@ -331,7 +331,7 @@ wlr_scene_node_set_position(struct wlr_scene_node *node, int x, int y)
 	g_scene_node_set_position_count++;
 }
 
-/* --- Stub fluxland functions --- */
+/* --- Stub fluxwl functions --- */
 
 /* Forward declaration so stubs use the same type as the definition below */
 struct wm_server;

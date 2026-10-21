@@ -1,5 +1,5 @@
 /*
- * harness.c - Integration test harness for fluxland
+ * harness.c - Integration test harness for fluxwl
  *
  * Forks a headless compositor, manages Wayland client connections,
  * and provides helpers for creating xdg_shell surfaces.
@@ -40,15 +40,15 @@ static void
 init_paths(void)
 {
 	snprintf(test_base, sizeof(test_base),
-		 "/tmp/fluxland-test/harness-%d", getpid());
+		 "/tmp/fluxwl-test/harness-%d", getpid());
 	snprintf(test_runtime, sizeof(test_runtime),
 		 "%s/runtime", test_base);
 	snprintf(test_config_home, sizeof(test_config_home),
 		 "%s/config", test_base);
 	snprintf(test_config_dir, sizeof(test_config_dir),
-		 "%s/config/fluxland", test_base);
+		 "%s/config/fluxwl", test_base);
 	snprintf(test_init_file, sizeof(test_init_file),
-		 "%s/config/fluxland/init", test_base);
+		 "%s/config/fluxwl/init", test_base);
 }
 
 void
@@ -56,7 +56,7 @@ harness_setup(void)
 {
 	init_paths();
 
-	mkdir("/tmp/fluxland-test", 0755);
+	mkdir("/tmp/fluxwl-test", 0755);
 	mkdir(test_base, 0755);
 	mkdir(test_runtime, 0700);
 	mkdir(test_config_home, 0755);
@@ -93,7 +93,7 @@ harness_cleanup(void)
 
 	/* Remove IPC socket */
 	char ipc_path[PATH_MAX_BUF];
-	snprintf(ipc_path, sizeof(ipc_path), "%s/fluxland-ipc.sock",
+	snprintf(ipc_path, sizeof(ipc_path), "%s/fluxwl-ipc.sock",
 		 test_runtime);
 	unlink(ipc_path);
 
@@ -136,12 +136,12 @@ harness_start_compositor(const char **out_socket)
 {
 	/* Find the compositor binary */
 	const char *compositor_bin = NULL;
-	if (access("/tmp/fluxland-test/wm-build/fluxland", X_OK) == 0)
-		compositor_bin = "/tmp/fluxland-test/wm-build/fluxland";
-	else if (access("../fluxland", X_OK) == 0)
-		compositor_bin = "../fluxland";
+	if (access("/tmp/fluxwl-test/wm-build/fluxwl", X_OK) == 0)
+		compositor_bin = "/tmp/fluxwl-test/wm-build/fluxwl";
+	else if (access("../fluxwl", X_OK) == 0)
+		compositor_bin = "../fluxwl";
 	else
-		compositor_bin = "fluxland";
+		compositor_bin = "fluxwl";
 
 	pid_t child = fork();
 	if (child < 0) {
@@ -160,7 +160,7 @@ harness_start_compositor(const char **out_socket)
 		freopen("/dev/null", "w", stdout);
 		freopen("/dev/null", "w", stderr);
 
-		execl(compositor_bin, "fluxland", (char *)NULL);
+		execl(compositor_bin, "fluxwl", (char *)NULL);
 		_exit(127);
 	}
 
@@ -421,7 +421,7 @@ create_shm_buffer(struct test_client *client, int width, int height)
 #endif
 	if (fd < 0) {
 		char name[64];
-		snprintf(name, sizeof(name), "/fluxland-test-%d", getpid());
+		snprintf(name, sizeof(name), "/fluxwl-test-%d", getpid());
 		fd = shm_open(name, O_RDWR | O_CREAT | O_EXCL, 0600);
 		shm_unlink(name);
 	}

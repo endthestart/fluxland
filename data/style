@@ -1,8 +1,8 @@
-# fluxland "Great Wave" style (default)
+# fluxwl "Great Wave" style (default)
 # Inspired by Hokusai's "The Great Wave off Kanagawa"
 # Deep indigo blues, ocean teal, cream whites, and warm accents.
 #
-# Place custom styles in: ~/.config/fluxland/styles/
+# Place custom styles in: ~/.config/fluxwl/styles/
 #
 # Texture syntax:
 #   Flat, Raised, or Sunken

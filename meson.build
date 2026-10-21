@@ -1,5 +1,5 @@
 project(
-  'fluxland',
+  'fluxwl',
   'c',
   version: '1.1.0',
   license: 'MIT',
@@ -58,7 +58,7 @@ if git.found()
     version = '"@0@"'.format(git_commit.stdout().strip())
   endif
 endif
-add_project_arguments('-DFLUXLAND_VERSION=@0@'.format(version), language: 'c')
+add_project_arguments('-DFLUXWL_VERSION=@0@'.format(version), language: 'c')
 
 # --- Gettext / i18n ---
 
@@ -363,7 +363,7 @@ if get_option('wlcs')
   wayland_client_dep = dependency('wayland-client')
 
   shared_library(
-    'fluxland-wlcs',
+    'fluxwl-wlcs',
     wlcs_compositor_sources + files('src/wlcs_shim.c'),
     include_directories: [wm_inc],
     dependencies: wm_deps + [threads, wayland_client_dep],
@@ -375,20 +375,20 @@ endif
 # --- IPC client tool ---
 
 executable(
-  'fluxland-ctl',
-  files('tools/fluxland-ctl.c'),
+  'fluxwl-ctl',
+  files('tools/fluxwl-ctl.c'),
   install: true,
 )
 
 # --- Install data files ---
 
 install_data(
-  'data/fluxland.desktop',
+  'data/fluxwl.desktop',
   install_dir: get_option('datadir') / 'applications',
 )
 
 install_data(
-  'data/fluxland-session.desktop',
+  'data/fluxwl-session.desktop',
   install_dir: get_option('datadir') / 'wayland-sessions',
 )
 
@@ -399,13 +399,13 @@ example_configs = [
   'data/menu',
   'data/startup',
   'data/style',
-  'data/fluxland-hc-dark.style',
-  'data/fluxland-hc-light.style',
+  'data/fluxwl-hc-dark.style',
+  'data/fluxwl-hc-light.style',
 ]
 
 install_data(
   example_configs,
-  install_dir: get_option('datadir') / 'fluxland' / 'examples',
+  install_dir: get_option('datadir') / 'fluxwl' / 'examples',
 )
 
 # --- Bundled styles (standalone + community + upstream Fluxbox) ---
@@ -415,30 +415,30 @@ install_data(
   'examples/styles/hc-dark.style',
   'examples/styles/hc-light.style',
   'examples/styles/wave.style',
-  install_dir: get_option('datadir') / 'fluxland' / 'styles',
+  install_dir: get_option('datadir') / 'fluxwl' / 'styles',
 )
 
 install_subdir(
   'examples/styles/community',
-  install_dir: get_option('datadir') / 'fluxland' / 'styles',
+  install_dir: get_option('datadir') / 'fluxwl' / 'styles',
 )
 
 install_subdir(
   'examples/styles/upstream',
-  install_dir: get_option('datadir') / 'fluxland' / 'styles',
+  install_dir: get_option('datadir') / 'fluxwl' / 'styles',
 )
 
 # --- Man pages ---
 
 install_man(
-  'man/fluxland.1',
-  'man/fluxland-ctl.1',
-  'man/fluxland-keys.5',
-  'man/fluxland-apps.5',
-  'man/fluxland-init.5',
-  'man/fluxland-menu.5',
-  'man/fluxland-startup.5',
-  'man/fluxland-style.5',
+  'man/fluxwl.1',
+  'man/fluxwl-ctl.1',
+  'man/fluxwl-keys.5',
+  'man/fluxwl-apps.5',
+  'man/fluxwl-init.5',
+  'man/fluxwl-menu.5',
+  'man/fluxwl-startup.5',
+  'man/fluxwl-style.5',
 )
 
 # --- Tests ---

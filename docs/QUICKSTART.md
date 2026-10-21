@@ -1,9 +1,9 @@
 # Quick Start Guide
 
-Test-drive fluxland on **Debian Trixie** (13) or newer.
+Test-drive fluxwl on **Debian Trixie** (13) or newer.
 
 > **⚠️ Linux Mint / Ubuntu 24.04 users:** These distributions ship wlroots 0.17,
-> but fluxland requires wlroots 0.18. See the [wlroots 0.18 installation section](#installing-wlroots-018-on-ubuntu-2404linux-mint-223)
+> but fluxwl requires wlroots 0.18. See the [wlroots 0.18 installation section](#installing-wlroots-018-on-ubuntu-2404linux-mint-223)
 > below for workarounds.
 
 ---
@@ -27,7 +27,7 @@ sudo apt install -y \
 
 ### Installing wlroots 0.18 on Ubuntu 24.04/Linux Mint 22.3
 
-Ubuntu 24.04 and Linux Mint 22.3 ship wlroots 0.17, but fluxland requires 0.18.
+Ubuntu 24.04 and Linux Mint 22.3 ship wlroots 0.17, but fluxwl requires 0.18.
 
 **Option A: Build wlroots 0.18 from source** (recommended)
 
@@ -96,7 +96,7 @@ These provide:
 
 ```sh
 git clone https://github.com/ecliptik/fluxland.git
-cd fluxland
+cd fluxwl
 
 meson setup build --buildtype=release
 ninja -C build
@@ -123,7 +123,7 @@ Use `checkinstall` for a quick local package:
 ```sh
 sudo apt install -y checkinstall
 
-sudo checkinstall --pkgname=fluxland \
+sudo checkinstall --pkgname=fluxwl \
   --pkgversion=1.1.0 \
   --pkgrelease=1 \
   --pkggroup=x11 \
@@ -145,7 +145,7 @@ sudo dpkg -i fluxland_1.1.0-1_amd64.deb
 To remove:
 
 ```sh
-sudo dpkg -r fluxland
+sudo dpkg -r fluxwl
 ```
 
 ## 4. Install (without packaging)
@@ -160,28 +160,28 @@ This installs:
 
 | What | Where |
 |------|-------|
-| `fluxland` | `/usr/local/bin/fluxland` |
-| `fluxland-ctl` | `/usr/local/bin/fluxland-ctl` |
+| `fluxwl` | `/usr/local/bin/fluxwl` |
+| `fluxwl-ctl` | `/usr/local/bin/fluxwl-ctl` |
 | Man pages | `/usr/local/share/man/` |
-| Session entry | `/usr/local/share/wayland-sessions/fluxland.desktop` |
-| Example configs | `/usr/local/share/fluxland/examples/` |
+| Session entry | `/usr/local/share/wayland-sessions/fluxwl.desktop` |
+| Example configs | `/usr/local/share/fluxwl/examples/` |
 
 ## 5. Configure
 
 Copy the example configuration to your home directory:
 
 ```sh
-mkdir -p ~/.config/fluxland
-cp /usr/local/share/fluxland/examples/* ~/.config/fluxland/
-chmod +x ~/.config/fluxland/startup
+mkdir -p ~/.config/fluxwl
+cp /usr/local/share/fluxwl/examples/* ~/.config/fluxwl/
+chmod +x ~/.config/fluxwl/startup
 ```
 
 If you built without installing, copy from the source tree instead:
 
 ```sh
-mkdir -p ~/.config/fluxland
-cp data/* ~/.config/fluxland/
-chmod +x ~/.config/fluxland/startup
+mkdir -p ~/.config/fluxwl
+cp data/* ~/.config/fluxwl/
+chmod +x ~/.config/fluxwl/startup
 ```
 
 ### Key config files
@@ -197,7 +197,7 @@ chmod +x ~/.config/fluxland/startup
 
 ### Customize for your setup
 
-Edit `~/.config/fluxland/startup` to enable your preferred tools:
+Edit `~/.config/fluxwl/startup` to enable your preferred tools:
 
 ```sh
 # Uncomment what you have installed:
@@ -207,7 +207,7 @@ swaybg -c '#2e3440' &         # wallpaper (solid color)
 # mako &                       # notifications
 ```
 
-Edit `~/.config/fluxland/init` to change focus behavior:
+Edit `~/.config/fluxwl/init` to change focus behavior:
 
 ```
 # Sloppy focus (focus follows mouse):
@@ -220,7 +220,7 @@ session.autoRaiseDelay: 250
 
 ### Option A: From a display manager (GDM, SDDM, LightDM)
 
-After installing, log out. On the login screen, select **fluxland** from
+After installing, log out. On the login screen, select **fluxwl** from
 the session menu (gear icon), then log in.
 
 ### Option B: From a TTY
@@ -228,13 +228,13 @@ the session menu (gear icon), then log in.
 Switch to a virtual console (`Ctrl+Alt+F2`), log in, and run:
 
 ```sh
-fluxland
+fluxwl
 ```
 
 Or launch with a terminal already open:
 
 ```sh
-fluxland -s foot
+fluxwl -s foot
 ```
 
 ### Option C: Nested inside another Wayland session (for development)
@@ -242,16 +242,16 @@ fluxland -s foot
 From an existing Wayland session (GNOME, KDE, Sway, etc.):
 
 ```sh
-WLR_BACKENDS=wayland ./build/fluxland -s foot
+WLR_BACKENDS=wayland ./build/fluxwl -s foot
 ```
 
-This opens fluxland in a window -- ideal for testing without leaving your
+This opens fluxwl in a window -- ideal for testing without leaving your
 current desktop.
 
 ### Option D: Headless (for automated testing)
 
 ```sh
-WLR_BACKENDS=headless WLR_RENDERER=pixman ./build/fluxland
+WLR_BACKENDS=headless WLR_RENDERER=pixman ./build/fluxwl
 ```
 
 ### Essential keybindings
@@ -277,14 +277,14 @@ Once running, these are the default bindings (`Mod4` = Super/Windows key):
 
 ### Verify IPC works
 
-In a terminal inside fluxland:
+In a terminal inside fluxwl:
 
 ```sh
-fluxland-ctl ping                # should print "pong"
-fluxland-ctl get_workspaces      # list workspaces as JSON
-fluxland-ctl get_windows         # list open windows
-fluxland-ctl action Exec foot    # open another terminal via IPC
-fluxland-ctl list-actions        # see all 50+ available actions
+fluxwl-ctl ping                # should print "pong"
+fluxwl-ctl get_workspaces      # list workspaces as JSON
+fluxwl-ctl get_windows         # list open windows
+fluxwl-ctl action Exec foot    # open another terminal via IPC
+fluxwl-ctl list-actions        # see all 50+ available actions
 ```
 
 ### Quick smoke test checklist
@@ -294,8 +294,8 @@ fluxland-ctl list-actions        # see all 50+ available actions
 - [ ] Windows can be moved (`Alt+Left-drag`) and resized (`Alt+Right-drag`)
 - [ ] Workspaces switch with `Mod4+1` through `Mod4+4`
 - [ ] Right-click on desktop opens the root menu
-- [ ] `Mod4+r` reloads config (check by editing `~/.config/fluxland/init`)
-- [ ] `fluxland-ctl ping` returns `pong`
+- [ ] `Mod4+r` reloads config (check by editing `~/.config/fluxwl/init`)
+- [ ] `fluxwl-ctl ping` returns `pong`
 - [ ] Window decorations render (title bar, close/minimize/maximize buttons)
 - [ ] `Mod4+Shift+e` exits cleanly
 
@@ -309,7 +309,7 @@ report:
 File an issue at the project's GitHub repository:
 
 ```sh
-# From the fluxland directory:
+# From the fluxwl directory:
 gh issue create
 ```
 
@@ -322,8 +322,8 @@ Use this template:
 ```markdown
 ## Bug Report
 
-**fluxland version:**
-<!-- paste output of: fluxland --version -->
+**fluxwl version:**
+<!-- paste output of: fluxwl --version -->
 
 **System info:**
 <!-- paste output of: uname -a -->
@@ -338,7 +338,7 @@ Use this template:
 <!-- If you built from source: /usr/local/lib/pkgconfig/wlroots-0.18.pc -->
 
 **Steps to reproduce:**
-1. Start fluxland with `fluxland -d` (debug mode)
+1. Start fluxwl with `fluxwl -d` (debug mode)
 2. Do X
 3. Do Y
 4. Observe Z
@@ -351,7 +351,7 @@ What actually happens. Include any error output.
 
 **Debug log:**
 <!-- Attach or paste relevant lines from the debug log.
-     Start with: fluxland -d 2>&1 | tee /tmp/wm-debug.log
+     Start with: fluxwl -d 2>&1 | tee /tmp/wm-debug.log
      Then reproduce the bug and attach /tmp/wm-debug.log -->
 
 **Config files (if relevant):**
@@ -365,11 +365,11 @@ What actually happens. Include any error output.
 
 ```sh
 # Run with debug logging, capture to file:
-fluxland -d 2>&1 | tee /tmp/wm-debug.log
+fluxwl -d 2>&1 | tee /tmp/wm-debug.log
 
 # In another terminal, grab system info:
 echo "=== Version ===" > /tmp/wm-bugreport.txt
-fluxland --version >> /tmp/wm-bugreport.txt 2>&1
+fluxwl --version >> /tmp/wm-bugreport.txt 2>&1
 echo "=== OS ===" >> /tmp/wm-bugreport.txt
 cat /etc/os-release >> /tmp/wm-bugreport.txt
 echo "=== Kernel ===" >> /tmp/wm-bugreport.txt
@@ -384,19 +384,19 @@ cat /tmp/wm-bugreport.txt
 
 ### Crash reports
 
-If fluxland crashes, a core dump is the most valuable artifact:
+If fluxwl crashes, a core dump is the most valuable artifact:
 
 ```sh
 # Enable core dumps for the session:
 ulimit -c unlimited
 
 # Run the compositor:
-fluxland -d 2>&1 | tee /tmp/wm-debug.log
+fluxwl -d 2>&1 | tee /tmp/wm-debug.log
 
 # After crash, the core file is usually in the current directory or /var/crash/
 # Get a backtrace:
 sudo apt install -y gdb
-gdb ./build/fluxland core -ex "bt full" -ex "quit" > /tmp/wm-backtrace.txt
+gdb ./build/fluxwl core -ex "bt full" -ex "quit" > /tmp/wm-backtrace.txt
 
 # Attach /tmp/wm-backtrace.txt and /tmp/wm-debug.log to the issue
 ```
@@ -406,7 +406,7 @@ For better crash diagnostics, build with debug symbols and sanitizers:
 ```sh
 meson setup build-debug --buildtype=debug -Dasan=true -Dubsan=true
 ninja -C build-debug
-./build-debug/fluxland -d
+./build-debug/fluxwl -d
 ```
 
 ### Bug triage workflow
@@ -435,9 +435,9 @@ When the Claude team receives your issue:
 
 ## Further reading
 
-- `man fluxland` -- compositor usage
-- `man fluxland-keys` -- keybinding format
-- `man fluxland-apps` -- per-window rules
-- `man fluxland-style` -- style format
-- `man fluxland-menu` -- menu definition format
+- `man fluxwl` -- compositor usage
+- `man fluxwl-keys` -- keybinding format
+- `man fluxwl-apps` -- per-window rules
+- `man fluxwl-style` -- style format
+- `man fluxwl-menu` -- menu definition format
 - [CONTRIBUTING.md](../CONTRIBUTING.md) -- development workflow and architecture

@@ -1,6 +1,6 @@
-# fluxland init file
+# fluxwl init file
 # Format: resource.key: value
-# Place your copy at: ~/.config/fluxland/init
+# Place your copy at: ~/.config/fluxwl/init
 #
 # This file controls compositor-wide settings. After editing,
 # press Mod4+r (Reconfigure) or restart the compositor to apply.
@@ -128,7 +128,7 @@ session.screen0.toolbar.widthPercent: 72
 # File paths (usually auto-detected; override if needed)
 # -------------------------------------------------------------------
 
-# session.keyFile: ~/.config/fluxland/keys
-# session.appsFile: ~/.config/fluxland/apps
-# session.menuFile: ~/.config/fluxland/menu
-# session.styleFile: ~/.config/fluxland/styles/default
+# session.keyFile: ~/.config/fluxwl/keys
+# session.appsFile: ~/.config/fluxwl/apps
+# session.menuFile: ~/.config/fluxwl/menu
+# session.styleFile: ~/.config/fluxwl/styles/default

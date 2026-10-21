@@ -54,7 +54,7 @@
 #define WLR_RENDER_WLR_RENDERER_H
 #define WLR_UTIL_LOG_H
 
-/* fluxland headers */
+/* fluxwl headers */
 #define WM_PROTOCOLS_H
 #define WM_SERVER_H
 #define WM_VIEW_H

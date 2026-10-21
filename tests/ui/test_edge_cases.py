@@ -1,4 +1,4 @@
-"""Edge case integration tests for fluxland compositor.
+"""Edge case integration tests for fluxwl compositor.
 
 Tests cover stress scenarios and robustness:
 - Rapid window create/destroy cycles

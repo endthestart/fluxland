@@ -1,4 +1,4 @@
-"""TC-LAYERS: Window layer operation tests for fluxland compositor.
+"""TC-LAYERS: Window layer operation tests for fluxwl compositor.
 
 Tests SetLayer, RaiseLayer, and LowerLayer commands which control
 the stacking layer of windows.

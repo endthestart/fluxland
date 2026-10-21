@@ -1,4 +1,4 @@
-"""TC-PLACE: Window placement tests for fluxland compositor.
+"""TC-PLACE: Window placement tests for fluxwl compositor.
 
 Tests that the compositor's placement policy correctly positions
 new windows to avoid overlap and stay within output bounds.

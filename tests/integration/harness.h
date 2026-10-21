@@ -1,12 +1,12 @@
 /*
- * harness.h - Integration test harness for fluxland
+ * harness.h - Integration test harness for fluxwl
  *
  * Provides helpers to fork a headless compositor, connect as a
  * Wayland client, create xdg_shell surfaces, and tear everything down.
  */
 
-#ifndef FLUXLAND_TEST_HARNESS_H
-#define FLUXLAND_TEST_HARNESS_H
+#ifndef FLUXWL_TEST_HARNESS_H
+#define FLUXWL_TEST_HARNESS_H
 
 #include <stdbool.h>
 #include <sys/types.h>
@@ -127,4 +127,4 @@ void harness_cleanup(void);
  */
 const char *harness_get_runtime_dir(void);
 
-#endif /* FLUXLAND_TEST_HARNESS_H */
+#endif /* FLUXWL_TEST_HARNESS_H */

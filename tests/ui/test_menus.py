@@ -1,4 +1,4 @@
-"""TC-MENU: Menu tests for fluxland compositor.
+"""TC-MENU: Menu tests for fluxwl compositor.
 
 Tests menu open/close lifecycle via IPC commands and menu events.
 Covers root menu, workspace menu, window menu, client menu, window list,

@@ -1,5 +1,5 @@
 /*
- * fluxland - A Fluxbox-inspired Wayland compositor
+ * fluxwl - A Fluxbox-inspired Wayland compositor
  * Copyright (c) 2025 fluxland contributors
  * SPDX-License-Identifier: MIT
  *
@@ -284,7 +284,7 @@ validate_config_dir(const char *path, bool from_env)
 	/* Reject path traversal components */
 	if (strstr(path, "..")) {
 		fprintf(stderr,
-			_("[fluxland] config directory path contains '..': %s\n"),
+			_("[fluxwl] config directory path contains '..': %s\n"),
 			path);
 		return false;
 	}
@@ -297,7 +297,7 @@ validate_config_dir(const char *path, bool from_env)
 
 	if (!S_ISDIR(st.st_mode)) {
 		fprintf(stderr,
-			_("[fluxland] config path is not a directory: %s\n"),
+			_("[fluxwl] config path is not a directory: %s\n"),
 			path);
 		return false;
 	}
@@ -306,7 +306,7 @@ validate_config_dir(const char *path, bool from_env)
 
 	if (st.st_uid != getuid()) {
 		fprintf(stderr,
-			_("[fluxland] config directory not owned by current "
+			_("[fluxwl] config directory not owned by current "
 			"user: %s (owned by uid %d, current uid %d)\n"),
 			path, (int)st.st_uid, (int)getuid());
 		if (from_env)
@@ -315,7 +315,7 @@ validate_config_dir(const char *path, bool from_env)
 
 	if (st.st_mode & (S_IWGRP | S_IWOTH)) {
 		fprintf(stderr,
-			_("[fluxland] config directory has insecure permissions "
+			_("[fluxwl] config directory has insecure permissions "
 			"(group/world writable): %s\n"), path);
 		if (from_env)
 			safe = false;
@@ -326,9 +326,10 @@ validate_config_dir(const char *path, bool from_env)
 
 /*
  * Find the config directory, searching in order:
- *   1. $FLUXLAND_CONFIG_DIR (validated for ownership/permissions)
- *   2. $XDG_CONFIG_HOME/fluxland
- *   3. ~/.config/fluxland
+ *   1. $FLUXWL_CONFIG_DIR, or $FLUXLAND_CONFIG_DIR (validated for
+ *      ownership/permissions)
+ *   2. $XDG_CONFIG_HOME/fluxwl, then $XDG_CONFIG_HOME/fluxland
+ *   3. ~/.config/fluxwl, then ~/.config/fluxland (pre-rename configs)
  *   4. ~/.fluxbox (Fluxbox compat fallback)
  */
 static char *
@@ -337,11 +338,13 @@ find_config_dir(void)
 	const char *env;
 	char path[4096];
 
-	env = getenv("FLUXLAND_CONFIG_DIR");
+	env = getenv("FLUXWL_CONFIG_DIR");
+	if (!env)
+		env = getenv("FLUXLAND_CONFIG_DIR"); /* name before the rename */
 	if (env) {
 		if (!validate_config_dir(env, true)) {
 			fprintf(stderr, "%s",
-				_("[fluxland] FLUXLAND_CONFIG_DIR failed "
+				_("[fluxwl] FLUXWL_CONFIG_DIR failed "
 				"validation, falling back to default "
 				"config path\n"));
 		} else if (dir_exists(env)) {
@@ -351,6 +354,11 @@ find_config_dir(void)
 
 	env = getenv("XDG_CONFIG_HOME");
 	if (env) {
+		snprintf(path, sizeof(path), "%s/fluxwl", env);
+		if (dir_exists(path)) {
+			validate_config_dir(path, false);
+			return strdup(path);
+		}
 		snprintf(path, sizeof(path), "%s/fluxland", env);
 		if (dir_exists(path)) {
 			validate_config_dir(path, false);
@@ -361,6 +369,12 @@ find_config_dir(void)
 	const char *home = getenv("HOME");
 	if (!home)
 		return NULL;
+
+	snprintf(path, sizeof(path), "%s/.config/fluxwl", home);
+	if (dir_exists(path)) {
+		validate_config_dir(path, false);
+		return strdup(path);
+	}
 
 	snprintf(path, sizeof(path), "%s/.config/fluxland", home);
 	if (dir_exists(path)) {
@@ -375,7 +389,7 @@ find_config_dir(void)
 	}
 
 	/* Default to XDG location even if it doesn't exist yet */
-	snprintf(path, sizeof(path), "%s/.config/fluxland", home);
+	snprintf(path, sizeof(path), "%s/.config/fluxwl", home);
 	return strdup(path);
 }
 

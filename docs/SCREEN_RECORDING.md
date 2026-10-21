@@ -1,6 +1,6 @@
 # Screen Recording with PipeWire
 
-Fluxland supports screen recording via PipeWire when built with `-Dpipewire=enabled`.
+fluxwl supports screen recording via PipeWire when built with `-Dpipewire=enabled`.
 
 ## Prerequisites
 
@@ -30,23 +30,23 @@ ninja -C build
 
 ```sh
 # Record the default (first) output
-fluxland-ctl screen_cast_start
+fluxwl-ctl screen_cast_start
 
 # Record a specific output
-fluxland-ctl screen_cast_start '{"output":"HDMI-A-1"}'
+fluxwl-ctl screen_cast_start '{"output":"HDMI-A-1"}'
 ```
 
 ### Check status
 
 ```sh
-fluxland-ctl get_screen_cast
+fluxwl-ctl get_screen_cast
 # Returns: {"success":true,"data":{"available":true,"state":"streaming","node_id":42}}
 ```
 
 ### Stop recording
 
 ```sh
-fluxland-ctl screen_cast_stop
+fluxwl-ctl screen_cast_stop
 ```
 
 ### Recording with OBS or FFmpeg
@@ -58,7 +58,7 @@ The screen cast creates a PipeWire video source node. Use the node ID with:
 ffmpeg -f pipewire -i "NODE_ID" -c:v libx264 output.mp4
 
 # OBS Studio
-# Add a "PipeWire Video Capture" source and select "fluxland-screen-cast"
+# Add a "PipeWire Video Capture" source and select "fluxwl-screen-cast"
 ```
 
 ## Architecture

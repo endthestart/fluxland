@@ -1,15 +1,15 @@
-.TH FLUXLAND-MENU 5 "2026-03-03" "fluxland 1.1.0" "File Formats Manual"
+.TH FLUXWL-MENU 5 "2026-03-03" "fluxwl 1.1.0" "File Formats Manual"
 .SH NAME
-fluxland-menu \- menu configuration for fluxland
+fluxwl-menu \- menu configuration for fluxwl
 .SH DESCRIPTION
 The menu file defines the root menu shown by the
 .B RootMenu
 action in
-.BR fluxland (1).
+.BR fluxwl (1).
 The format is compatible with the Fluxbox menu file format.
 .PP
 By default, the file is located at
-.I ~/.config/fluxland/menu
+.I ~/.config/fluxwl/menu
 but the path can be overridden in the init file via
 .BR session.menuFile .
 .SH SYNTAX
@@ -155,7 +155,7 @@ Hovering over a submenu item automatically opens it.
 .PP
 .RS 4
 .nf
-[begin] (fluxland)
+[begin] (fluxwl)
   [exec] (Terminal) {foot}
   [exec] (File Manager) {thunar}
   [exec] (Web Browser) {firefox}
@@ -165,7 +165,7 @@ Hovering over a submenu item automatically opens it.
     [exec] (VS Code) {code}
   [end]
   [submenu] (Styles)
-    [stylesdir] (~/.config/fluxland/styles)
+    [stylesdir] (~/.config/fluxwl/styles)
   [end]
   [workspaces] (Workspaces)
   [separator]
@@ -177,7 +177,7 @@ Hovering over a submenu item automatically opens it.
 .fi
 .RE
 .SH SEE ALSO
-.BR fluxland (1),
-.BR fluxland-keys (5),
-.BR fluxland-apps (5),
-.BR fluxland-style (5)
+.BR fluxwl (1),
+.BR fluxwl-keys (5),
+.BR fluxwl-apps (5),
+.BR fluxwl-style (5)

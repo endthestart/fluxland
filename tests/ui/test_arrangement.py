@@ -1,4 +1,4 @@
-"""TC-ARR: Window arrangement tests for fluxland compositor.
+"""TC-ARR: Window arrangement tests for fluxwl compositor.
 
 Tests window arrangement operations: grid tiling, vertical/horizontal
 stacking, and cascade layout via IPC commands.

@@ -1,10 +1,10 @@
 #!/bin/sh
 #
-# fluxland startup script
+# fluxwl startup script
 # Executed once when the compositor starts. Use this to launch
 # background services, set wallpaper, and start panels.
 #
-# Place your copy at: ~/.config/fluxland/startup
+# Place your copy at: ~/.config/fluxwl/startup
 # Make sure it is executable: chmod +x startup
 
 # -------------------------------------------------------------------

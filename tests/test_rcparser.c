@@ -1,5 +1,5 @@
 /*
- * fluxland - A Fluxbox-inspired Wayland compositor
+ * fluxwl - A Fluxbox-inspired Wayland compositor
  * Copyright (c) 2025 fluxland contributors
  * SPDX-License-Identifier: MIT
  *
@@ -26,7 +26,7 @@
 /* Test helpers                                                       */
 /* ------------------------------------------------------------------ */
 
-#define TEST_DIR "/tmp/fluxland-test"
+#define TEST_DIR "/tmp/fluxwl-test"
 #define TEST_RC  TEST_DIR "/test_rc_file"
 
 static void

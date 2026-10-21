@@ -1,20 +1,20 @@
 // SPDX-License-Identifier: MIT
 // Copyright (c) 2026 The Fluxland Contributors
 /*
- * fluxland-ctl - Command-line IPC client for fluxland
+ * fluxwl-ctl - Command-line IPC client for fluxwl
  *
  * Standalone binary with no wlroots dependency.
  * Connects to the compositor's Unix socket and sends JSON commands.
  *
  * Usage:
- *   fluxland-ctl action Close
- *   fluxland-ctl action Workspace 3
- *   fluxland-ctl get_windows
- *   fluxland-ctl get_workspaces
- *   fluxland-ctl get_outputs
- *   fluxland-ctl get_config
- *   fluxland-ctl subscribe window workspace
- *   fluxland-ctl list-actions
+ *   fluxwl-ctl action Close
+ *   fluxwl-ctl action Workspace 3
+ *   fluxwl-ctl get_windows
+ *   fluxwl-ctl get_workspaces
+ *   fluxwl-ctl get_outputs
+ *   fluxwl-ctl get_config
+ *   fluxwl-ctl subscribe window workspace
+ *   fluxwl-ctl list-actions
  */
 
 #define _POSIX_C_SOURCE 200809L
@@ -30,7 +30,7 @@
 #define MAX_RESPONSE_SIZE (10 * 1024 * 1024) /* 10 MiB */
 
 static const char usage[] =
-	"Usage: fluxland-ctl [options] <command> [args...]\n"
+	"Usage: fluxwl-ctl [options] <command> [args...]\n"
 	"\n"
 	"Commands:\n"
 	"  action <name> [arg]    Execute a compositor action\n"
@@ -43,19 +43,19 @@ static const char usage[] =
 	"  ping                   Test connectivity\n"
 	"\n"
 	"Options:\n"
-	"  -s <path>  Socket path (default: auto-detect via $FLUXLAND_SOCK\n"
-	"             or $XDG_RUNTIME_DIR/fluxland.$WAYLAND_DISPLAY.sock)\n"
+	"  -s <path>  Socket path (default: auto-detect via $FLUXWL_SOCK\n"
+	"             or $XDG_RUNTIME_DIR/fluxwl.$WAYLAND_DISPLAY.sock)\n"
 	"  -r         Raw output (no pretty printing)\n"
 	"  -h         Show this help\n"
 	"\n"
 	"Examples:\n"
-	"  fluxland-ctl action Close\n"
-	"  fluxland-ctl action Workspace 3\n"
-	"  fluxland-ctl action Exec foot\n"
-	"  fluxland-ctl action ArrangeWindows\n"
-	"  fluxland-ctl get_windows\n"
-	"  fluxland-ctl subscribe window\n"
-	"  fluxland-ctl list-actions\n";
+	"  fluxwl-ctl action Close\n"
+	"  fluxwl-ctl action Workspace 3\n"
+	"  fluxwl-ctl action Exec foot\n"
+	"  fluxwl-ctl action ArrangeWindows\n"
+	"  fluxwl-ctl get_windows\n"
+	"  fluxwl-ctl subscribe window\n"
+	"  fluxwl-ctl list-actions\n";
 
 /* Available actions table — must match ipc_commands.c action_table */
 struct action_info {
@@ -182,8 +182,10 @@ json_escape_str(const char *s)
 static char *
 find_socket_path(void)
 {
-	/* First try FLUXLAND_SOCK */
-	const char *sock = getenv("FLUXLAND_SOCK");
+	/* First try FLUXWL_SOCK, then its pre-rename name */
+	const char *sock = getenv("FLUXWL_SOCK");
+	if (!sock)
+		sock = getenv("FLUXLAND_SOCK");
 	if (sock) return strdup(sock);
 
 	/* Build from XDG_RUNTIME_DIR and WAYLAND_DISPLAY */
@@ -198,11 +200,11 @@ find_socket_path(void)
 		display = "wayland-0";
 	}
 
-	size_t len = strlen(runtime) + strlen("/fluxland.") +
+	size_t len = strlen(runtime) + strlen("/fluxwl.") +
 		strlen(display) + strlen(".sock") + 1;
 	char *path = malloc(len);
 	if (path) {
-		snprintf(path, len, "%s/fluxland.%s.sock",
+		snprintf(path, len, "%s/fluxwl.%s.sock",
 			runtime, display);
 	}
 	return path;
@@ -214,7 +216,7 @@ connect_socket(const char *path)
 	int fd = socket(AF_UNIX, SOCK_STREAM, 0);
 	if (fd < 0) {
 		fprintf(stderr,
-			"Cannot connect to fluxland. Is the compositor running?\n");
+			"Cannot connect to fluxwl. Is the compositor running?\n");
 		return -1;
 	}
 
@@ -229,7 +231,7 @@ connect_socket(const char *path)
 
 	if (connect(fd, (struct sockaddr *)&addr, sizeof(addr)) < 0) {
 		fprintf(stderr,
-			"Cannot connect to fluxland. Is the compositor running?\n"
+			"Cannot connect to fluxwl. Is the compositor running?\n"
 			"  (socket: %s)\n", path);
 		close(fd);
 		return -1;
@@ -438,7 +440,7 @@ main(int argc, char *argv[])
 	if (!is_known_command(command)) {
 		fprintf(stderr,
 			"Unknown command '%s'. "
-			"Run 'fluxland-ctl --help' for usage.\n",
+			"Run 'fluxwl-ctl --help' for usage.\n",
 			command);
 		free(socket_path);
 		return 1;

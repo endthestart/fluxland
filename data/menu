@@ -1,4 +1,4 @@
-[begin] (fluxland)
+[begin] (fluxwl)
 
   [submenu] (Terminals)
     [exec] (foot) {foot}
@@ -45,7 +45,7 @@
   [separator]
 
   [submenu] (Styles)
-    [stylesdir] (~/.config/fluxland/styles)
+    [stylesdir] (~/.config/fluxwl/styles)
   [end]
 
   [workspaces] (Workspaces)
@@ -54,7 +54,7 @@
 
   [separator]
 
-  [submenu] (fluxland)
+  [submenu] (fluxwl)
     [reconfig] (Reload Config)
     [restart] (Restart)
     [separator]

@@ -1,4 +1,4 @@
-Source: fluxland
+Source: fluxwl
 Section: x11
 Priority: optional
 Maintainer: fluxland contributors <fluxland@example.com>
@@ -24,13 +24,13 @@ Standards-Version: 4.6.2
 Homepage: https://github.com/ecliptik/fluxland
 Rules-Requires-Root: no
 
-Package: fluxland
+Package: fluxwl
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
 Recommends: xwayland, foot
 Suggests: grim, slurp, wl-clipboard, swaylock
 Description: Fluxbox-inspired Wayland compositor
- Fluxland is a lightweight Wayland compositor inspired by Fluxbox.
+ fluxwl is a lightweight Wayland compositor inspired by Fluxbox.
  It provides a familiar stacking window manager experience on Wayland
  using the wlroots library, with features including configurable
  keybindings, window decorations, workspaces, a toolbar, menus, and

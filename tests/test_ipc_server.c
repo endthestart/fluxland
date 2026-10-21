@@ -1163,7 +1163,7 @@ test_init_uses_server_socket_name(void)
 	if (rc == 0) {
 		assert(ipc.socket_path != NULL);
 		assert(strstr(ipc.socket_path, "wayland-test-99") != NULL);
-		assert(strstr(ipc.socket_path, "fluxland.") != NULL);
+		assert(strstr(ipc.socket_path, "fluxwl.") != NULL);
 		wm_ipc_destroy(&ipc);
 	}
 	/* If rc == -1, it might be a permission issue, that's fine */
@@ -1362,7 +1362,7 @@ test_ipc_destroy_unlinks_socket(void)
 	reset_globals();
 
 	/* Create a temp file to use as a fake socket path */
-	char tmppath[] = "/tmp/fluxland-test-sock-XXXXXX";
+	char tmppath[] = "/tmp/fluxwl-test-sock-XXXXXX";
 	int fd = mkstemp(tmppath);
 	assert(fd >= 0);
 	close(fd);
@@ -1522,7 +1522,7 @@ test_init_xdg_runtime_dir_not_dir(void)
 	struct wm_ipc_server ipc;
 
 	/* Create a regular file to use as XDG_RUNTIME_DIR */
-	char tmppath[] = "/tmp/fluxland-test-notdir-XXXXXX";
+	char tmppath[] = "/tmp/fluxwl-test-notdir-XXXXXX";
 	int tfd = mkstemp(tmppath);
 	assert(tfd >= 0);
 	close(tfd);

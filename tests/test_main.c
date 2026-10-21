@@ -1,7 +1,7 @@
 /*
- * test_main.c - Integration tests for fluxland main.c entry point
+ * test_main.c - Integration tests for fluxwl main.c entry point
  *
- * These tests invoke the actual fluxland binary with various command-line
+ * These tests invoke the actual fluxwl binary with various command-line
  * flags and verify exit codes and output.  This is an integration-style
  * test (no #include "source.c" pattern) since main() owns the process.
  */
@@ -16,7 +16,7 @@
 #include <sys/wait.h>
 #include <unistd.h>
 
-#define TEST_DIR "/tmp/fluxland-test/wm-test-main"
+#define TEST_DIR "/tmp/fluxwl-test/wm-test-main"
 
 /*
  * Run a command, capture combined stdout+stderr into a malloc'd buffer,
@@ -54,15 +54,15 @@ run_cmd(const char *cmd, char **out_buf, size_t *out_len)
 	return status;
 }
 
-/* Helper: get the fluxland binary path from the FLUXLAND_BIN env var,
+/* Helper: get the fluxwl binary path from the FLUXWL_BIN env var,
  * falling back to a build-relative default. */
 static const char *
 get_binary(void)
 {
-	const char *bin = getenv("FLUXLAND_BIN");
+	const char *bin = getenv("FLUXWL_BIN");
 	if (bin)
 		return bin;
-	return "fluxland";
+	return "fluxwl";
 }
 
 /* ---- Test: --version prints version string and exits 0 ---- */
@@ -78,7 +78,7 @@ test_version_flag(void)
 
 	assert(WIFEXITED(status));
 	assert(WEXITSTATUS(status) == 0);
-	assert(strstr(out, "fluxland") != NULL);
+	assert(strstr(out, "fluxwl") != NULL);
 
 	free(out);
 	printf("  PASS: test_version_flag\n");
@@ -97,7 +97,7 @@ test_version_short_flag(void)
 
 	assert(WIFEXITED(status));
 	assert(WEXITSTATUS(status) == 0);
-	assert(strstr(out, "fluxland") != NULL);
+	assert(strstr(out, "fluxwl") != NULL);
 
 	free(out);
 	printf("  PASS: test_version_short_flag\n");
@@ -182,7 +182,7 @@ test_check_config_valid(void)
 	const char *bin = get_binary();
 
 	/* Create a minimal valid config directory */
-	mkdir("/tmp/fluxland-test", 0755);
+	mkdir("/tmp/fluxwl-test", 0755);
 	mkdir(TEST_DIR, 0700);
 
 	/* Write a minimal valid init file */
@@ -195,8 +195,8 @@ test_check_config_valid(void)
 
 	char cmd[1024];
 	snprintf(cmd, sizeof(cmd),
-		"HOME=/tmp/fluxland-test-noexist "
-		"FLUXLAND_CONFIG_DIR=%s "
+		"HOME=/tmp/fluxwl-test-noexist "
+		"FLUXWL_CONFIG_DIR=%s "
 		"%s --check-config 2>&1",
 		TEST_DIR, bin);
 
@@ -217,7 +217,7 @@ test_check_config_unreadable(void)
 {
 	const char *bin = get_binary();
 
-	mkdir("/tmp/fluxland-test", 0755);
+	mkdir("/tmp/fluxwl-test", 0755);
 	mkdir(TEST_DIR, 0700);
 
 	/* Create an unreadable init file to trigger a fatal error */
@@ -231,8 +231,8 @@ test_check_config_unreadable(void)
 
 	char cmd[1024];
 	snprintf(cmd, sizeof(cmd),
-		"HOME=/tmp/fluxland-test-noexist "
-		"FLUXLAND_CONFIG_DIR=%s "
+		"HOME=/tmp/fluxwl-test-noexist "
+		"FLUXWL_CONFIG_DIR=%s "
 		"%s --check-config 2>&1",
 		TEST_DIR, bin);
 
@@ -282,14 +282,14 @@ test_check_config_empty_dir(void)
 	const char *bin = get_binary();
 	const char *empty_dir = TEST_DIR "/empty-cfg";
 
-	mkdir("/tmp/fluxland-test", 0755);
+	mkdir("/tmp/fluxwl-test", 0755);
 	mkdir(TEST_DIR, 0700);
 	mkdir(empty_dir, 0700);
 
 	char cmd[1024];
 	snprintf(cmd, sizeof(cmd),
-		"HOME=/tmp/fluxland-test-noexist "
-		"FLUXLAND_CONFIG_DIR=%s "
+		"HOME=/tmp/fluxwl-test-noexist "
+		"FLUXWL_CONFIG_DIR=%s "
 		"%s --check-config 2>&1",
 		empty_dir, bin);
 
@@ -398,7 +398,7 @@ test_check_config_bad_key(void)
 	const char *bin = get_binary();
 	const char *bad_dir = TEST_DIR "/bad-cfg";
 
-	mkdir("/tmp/fluxland-test", 0755);
+	mkdir("/tmp/fluxwl-test", 0755);
 	mkdir(TEST_DIR, 0700);
 	mkdir(bad_dir, 0700);
 
@@ -412,8 +412,8 @@ test_check_config_bad_key(void)
 
 	char cmd[1024];
 	snprintf(cmd, sizeof(cmd),
-		"HOME=/tmp/fluxland-test-noexist "
-		"FLUXLAND_CONFIG_DIR=%s "
+		"HOME=/tmp/fluxwl-test-noexist "
+		"FLUXWL_CONFIG_DIR=%s "
 		"%s --check-config 2>&1",
 		bad_dir, bin);
 
@@ -444,7 +444,7 @@ test_combined_flags(void)
 	assert(WIFEXITED(status));
 	/* -v prints version and exits first */
 	assert(WEXITSTATUS(status) == 0);
-	assert(strstr(out, "fluxland") != NULL);
+	assert(strstr(out, "fluxwl") != NULL);
 
 	free(out);
 	printf("  PASS: test_combined_flags\n");

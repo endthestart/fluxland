@@ -1,4 +1,4 @@
-fluxland (1.1.0-1) unstable; urgency=medium
+fluxwl (1.1.0-1) unstable; urgency=medium
 
   * Fluxbox style compatibility with 37 bundled styles
   * GdkPixbuf pixmap support for XPM/JPEG/BMP
@@ -6,15 +6,15 @@ fluxland (1.1.0-1) unstable; urgency=medium
   * Performance: iconbar dirty tracking, decoration position guards
   * Multiple critical bug fixes (UAF, type confusion, config hardening)
 
- -- Fluxland Contributors <noreply@fluxland.dev>  Mon, 03 Mar 2026 00:00:00 +0000
+ -- fluxwl Contributors <noreply@fluxwl.dev>  Mon, 03 Mar 2026 00:00:00 +0000
 
-fluxland (1.0.0-1) unstable; urgency=medium
+fluxwl (1.0.0-1) unstable; urgency=medium
 
   * Release 1.0.0.
 
  -- fluxland contributors <fluxland@example.com>  Thu, 27 Feb 2026 00:00:00 +0000
 
-fluxland (0.1.0~dev-1) unstable; urgency=medium
+fluxwl (0.1.0~dev-1) unstable; urgency=medium
 
   * Initial packaging.
 

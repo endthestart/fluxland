@@ -1,4 +1,4 @@
-# fluxland per-window rules
+# fluxwl per-window rules
 # Format: [app] (property=pattern) ... settings ... [end]
 # See fluxbox-apps(5) for format documentation.
 #

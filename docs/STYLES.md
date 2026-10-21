@@ -1,12 +1,12 @@
 # Fluxbox Style Compatibility
 
-fluxland natively supports Fluxbox style files. Styles from
+fluxwl natively supports Fluxbox style files. Styles from
 [box-look.org](https://www.box-look.org/browse?cat=139&ord=latest) and other
 Fluxbox style archives work without modification.
 
 ## The Great Wave
 
-The signature fluxland style. Deep indigo blues, ocean teal, cream whites, and
+The signature fluxwl style. Deep indigo blues, ocean teal, cream whites, and
 warm accents inspired by Hokusai's *The Great Wave off Kanagawa*. Ships as a
 bundled style at [`examples/styles/wave.style`](../examples/styles/wave.style).
 
@@ -26,7 +26,7 @@ Style file: [`examples/styles/wave.style`](../examples/styles/wave.style)
 
 ## Community Styles
 
-10 community styles from box-look.org tested and verified on fluxland. These
+10 community styles from box-look.org tested and verified on fluxwl. These
 styles are included in [`examples/styles/community/`](../examples/styles/community/).
 
 ### [Carbonit](https://www.box-look.org/p/1016944/)
@@ -305,8 +305,8 @@ Dark red/maroon style with diagonal gradients and grey labels.
 Copy a community or upstream style directory to your styles path:
 
 ```sh
-cp -r examples/styles/community/Graphite ~/.config/fluxland/styles/
-cp -r examples/styles/upstream/BlueFlux ~/.config/fluxland/styles/
+cp -r examples/styles/community/Graphite ~/.config/fluxwl/styles/
+cp -r examples/styles/upstream/BlueFlux ~/.config/fluxwl/styles/
 ```
 
 ### Apply at runtime
@@ -314,7 +314,7 @@ cp -r examples/styles/upstream/BlueFlux ~/.config/fluxland/styles/
 Switch styles without restarting via IPC:
 
 ```sh
-fluxland-ctl action SetStyle ~/.config/fluxland/styles/Graphite
+fluxwl-ctl action SetStyle ~/.config/fluxwl/styles/Graphite
 ```
 
 Or use the Styles submenu in the root menu — it lists all styles found in
@@ -323,7 +323,7 @@ your configured styles directory.
 ### Install styles from box-look.org
 
 1. Download a Fluxbox style archive from [box-look.org](https://www.box-look.org/browse?cat=139&ord=latest)
-2. Extract to `~/.config/fluxland/styles/`
+2. Extract to `~/.config/fluxwl/styles/`
 3. Apply with `SetStyle` or from the Styles menu
 
 Most pure Fluxbox styles work directly. Styles that require matching GTK
@@ -332,13 +332,13 @@ GTK portion is not used.
 
 ### Create your own
 
-See [`fluxland-style(5)`](../man/fluxland-style.5) for the complete style
+See [`fluxwl-style(5)`](../man/fluxwl-style.5) for the complete style
 file format reference. The default style at
 [`data/style`](../data/style) is a good starting point.
 
 ## Style Rendering Support
 
-fluxland supports the full Fluxbox style property set for window decorations,
+fluxwl supports the full Fluxbox style property set for window decorations,
 menus, and the toolbar:
 
 | Feature | Status |
