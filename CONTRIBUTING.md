@@ -4,21 +4,45 @@ Thank you for your interest in contributing to fluxwl! This document
 covers the development workflow, project architecture, and how to add
 common types of features.
 
+## About this fork
+
+fluxwl is a maintained fork of [ecliptik/fluxland](https://github.com/ecliptik/fluxland);
+see [NOTICE.md](NOTICE.md). Contributions go to this repository. Upstream doesn't
+accept pull requests.
+
 ## License
 
 This project is licensed under the MIT License. By contributing, you agree
-that your contributions will be licensed under the same terms.
+that your contributions will be licensed under the same terms. Sign off each
+commit (`git commit -s`) to certify the [Developer Certificate of
+Origin](https://developercertificate.org/).
+
+## AI-assisted contributions
+
+AI-assisted contributions are welcome; fluxland itself was written that way. No
+disclosure trailer is required. The rule for every contribution, however it was
+written: **a human has built it, run it, and can explain it.** You answer
+review questions about your change yourself.
+
+## Code of conduct and security
+
+Everyone taking part follows the [code of conduct](CODE_OF_CONDUCT.md). Report
+vulnerabilities privately, as [SECURITY.md](SECURITY.md) describes.
 
 ## Prerequisites
 
 Install the following development dependencies:
 
-**Debian/Ubuntu:**
+fluxwl needs **wlroots 0.20**.
+
+**Arch Linux / CachyOS:**
 ```sh
-sudo apt install meson ninja-build pkg-config libwlroots-0.18-dev \
-  libwayland-dev wayland-protocols libxkbcommon-dev libinput-dev \
-  libpixman-1-dev libpango1.0-dev libdrm-dev
+sudo pacman -S --needed meson ninja pkgconf wlroots0.20 wayland \
+  wayland-protocols libxkbcommon libinput pixman pango libdrm
 ```
+
+**Debian/Ubuntu:** wlroots 0.20 isn't packaged on current stable releases;
+build it from source or use a distribution that ships it.
 
 **Optional (XWayland support):**
 ```sh

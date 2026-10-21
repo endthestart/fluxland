@@ -1,18 +1,8 @@
-## Summary
-
-<!-- Brief description of changes -->
-
-## Changes
-
--
+## What and why
 
 ## Test plan
 
-<!-- How were these changes tested? -->
+- [ ] `meson test -C build` passes
+- [ ] Tried in a running session (what you did)
 
-## Checklist
-
-- [ ] Tests pass (`meson test -C build`)
-- [ ] No new compiler warnings
-- [ ] Documentation updated (if applicable)
-- [ ] Commit messages follow conventional commits format
+Commits are signed off (`git commit -s`).

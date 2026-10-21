@@ -1,0 +1,46 @@
+name: Bug report
+description: Something in fluxwl doesn't work as it should.
+labels: [bug]
+body:
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened
+      description: What you did, what you expected, and what happened instead.
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. Ctrl-drag a window's titlebar onto another window
+        2. ...
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: fluxwl version
+      description: Output of `fluxwl --version`
+    validations:
+      required: true
+  - type: input
+    id: wlroots
+    attributes:
+      label: wlroots version and distribution
+      placeholder: wlroots 0.20.2 on CachyOS
+    validations:
+      required: true
+  - type: textarea
+    id: log
+    attributes:
+      label: Log
+      description: Run `fluxwl -d 2> fluxwl.log` to reproduce, then paste the relevant part. For a crash, include a backtrace if you can.
+      render: text
+  - type: textarea
+    id: config
+    attributes:
+      label: Relevant config
+      description: The lines from init, keys, apps or your style that matter, if any.
+      render: text
